@@ -1,4 +1,7 @@
 {
+  "enter-spotify-consumer-key": "Spotify Tüketici Anahtarı Giriniz",
+  "spotify-consumer-key-tip": "Mp3 müzik kapağı almak için kullanılan.",
+  "spotify-consumer-key-tip-2": "https://developer.spotify.com/ adresinden API Anahtarı alın.",
   "blinko": "Blinko",
   "notes": "Notlar",
   "resources": "Kaynaklar",
@@ -293,5 +296,8 @@
   "cloud-file": "Bulut Dosyası",
   "move-to-parent": "Ebeveyn Düzeyine Taşı",
   "no-resources-found": "Kaynak Bulunamadı",
-  "operation-in-progress": "Devam eden işlem"
+  "operation-in-progress": "Devam eden işlem",
+  "new-folder": "Yeni Klasör",
+  "folder-name-exists": "Klasör Adı Mevcut",
+  "folder-name-required": "Klasör Adı Gerekli"
 }

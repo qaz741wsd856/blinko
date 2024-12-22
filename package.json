@@ -1,6 +1,6 @@
 {
   "name": "blinko",
-  "version": "0.28.1",
+  "version": "0.29.4",
   "repository": "https://github.com/blinko-space/blinko.git",
   "private": true,
   "browser": {
@@ -100,6 +100,7 @@
     "mobx": "^6.13.3",
     "mobx-react-lite": "^4.0.7",
     "motion": "^11.13.1",
+    "music-metadata": "^10.6.4",
     "ncp": "^2.0.0",
     "next": "14.2.10",
     "next-auth": "^4.24.7",

@@ -5,11 +5,10 @@ import "swagger-ui-react/swagger-ui.css";
 import 'react-photo-view/dist/react-photo-view.css';
 import '@/lib/i18n'
 import NProgress from 'nprogress';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'next-themes';
 import { SessionProvider } from 'next-auth/react';
 import { NextUIProvider } from '@nextui-org/react';
-import { useEffect } from 'react';
 import { Router } from 'next/router';
 import { initStore } from '@/store/init';
 import { Inspector, InspectParams } from 'react-dev-inspector';
@@ -17,11 +16,25 @@ import { CommonLayout } from '@/components/Layout';
 import { AppProvider } from '@/store/module/AppProvider';
 import { motion } from 'motion/react';
 import { BlinkoMultiSelectPop } from '@/components/BlinkoMultiSelectPop';
-import { BlinkoAddButton } from '@/components/BlinkoAddButton';
+import { BlinkoMusicPlayer } from '@/components/BlinkoMusicPlayer';
+import { LoadingPage } from '@/components/Common/LoadingPage';
 
 const MyApp = ({ Component, pageProps }) => {
+  const [isLoading, setIsLoading] = useState(true);
   initStore();
   useProgressBar();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return <LoadingPage />;
+  }
+
   return (
     <>
       <Inspector
@@ -51,6 +64,7 @@ const MyApp = ({ Component, pageProps }) => {
           </ThemeProvider>
         </NextUIProvider>
       </SessionProvider>
+      <BlinkoMusicPlayer />
     </>
   );
 };

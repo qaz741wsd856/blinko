@@ -1,4 +1,6 @@
 {
+  "spotify-consumer-key-tip": "Verwendet, um MP3-Musikcover zu erhalten.",
+  "spotify-consumer-key-tip-2": "Holen Sie sich den API-Schlüssel von https://developer.spotify.com/",
   "blinko": "Blinko",
   "notes": "Anmerkungen",
   "resources": "Ressourcen",
@@ -351,5 +353,8 @@
   "operation-success": "Operation erfolgreich",
   "cloud-file": "Cloud-Datei",
   "move-to-parent": "Zum übergeordneten Element wechseln",
-  "no-resources-found": "Keine Ressourcen gefunden"
+  "no-resources-found": "Keine Ressourcen gefunden",
+  "new-folder": "Neuer Ordner",
+  "folder-name-exists": "Der Ordnername existiert.",
+  "folder-name-required": "Ordnername erforderlich"
 }

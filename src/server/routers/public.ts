@@ -6,8 +6,15 @@ import { cache } from '@/lib/cache';
 import { unfurl } from 'unfurl.js'
 import { Metadata } from 'unfurl.js/dist/types';
 import pLimit from 'p-limit';
-import { FileService } from '../plugins/files';
+import * as mm from 'music-metadata';
+import { UPLOAD_FILE_PATH } from '@/lib/constant';
+import { SpotifyClient } from './helper/spotify';
+import { PrismaClient } from '@prisma/client';
+import { getGlobalConfig } from './config';
+import { Readable } from 'stream';
+
 const limit = pLimit(5);
+let spotifyClient: SpotifyClient | null = null;
 
 export const publicRouter = router({
   version: publicProcedure
@@ -49,6 +56,7 @@ export const publicRouter = router({
       description: z.string()
     }), z.null()]))
     .query(async function ({ input }) {
+
       return cache.wrap(input.url, async () => {
         try {
           const timeoutPromise = new Promise((_, reject) => {
@@ -89,6 +97,99 @@ export const publicRouter = router({
       return {
         success: true,
         data: input.data
+      }
+    }),
+  musicMetadata: publicProcedure
+    .meta({
+      openapi: { method: 'GET', path: '/v1/public/music-metadata', summary: 'Get music metadata', tags: ['Public'] },
+      headers: {
+        'Cache-Control': 'public, max-age=86400, immutable',
+        'ETag': true,
+      }
+    })
+    .input(z.object({ filePath: z.string() }))
+    .output(z.object({
+      coverUrl: z.string().optional(),
+      trackName: z.string().optional(),
+      albumName: z.string().optional(),
+      artists: z.array(z.string()).optional()
+    }))
+    .query(async function ({ input }) {
+      const config = await getGlobalConfig({ useAdmin: true })
+      let metadata: mm.IAudioMetadata | null = null;
+
+      if (input.filePath.includes('/api/file/')) {
+        const realFilePath = input.filePath.replace('/api/file', UPLOAD_FILE_PATH);
+        metadata = await mm.parseFile(realFilePath);
+      } else if (input.filePath.includes('s3file')) {
+        try {
+          const response = await fetch(input.filePath);
+          if (!response.ok) {
+            throw new Error(`Failed to get presigned URL: ${response.statusText}`);
+          }
+
+          const presignedUrl = response.url;
+          console.log('presignedUrl', { presignedUrl })
+          const fileResponse = await fetch(presignedUrl);
+          if (!fileResponse.ok) {
+            throw new Error(`Failed to fetch file content: ${fileResponse.statusText}`);
+          }
+
+          const nodeStream = Readable.fromWeb(fileResponse.body as any);
+
+          metadata = await mm.parseStream(
+            nodeStream,
+            { mimeType: 'audio/mpeg' }
+          );
+
+        } catch (error) {
+          console.error('Failed to get s3 file metadata:', error);
+          throw error;
+        }
+      }
+
+      const artistName = metadata?.common.artist?.trim();
+      const trackName = metadata?.common.title?.trim();
+
+      if (!artistName || !trackName) {
+        // console.log('Missing artist or track name');
+        return {
+          coverUrl: '',
+          trackName: '',
+          albumName: '',
+          artists: [],
+        }
+      }
+
+      if (!spotifyClient) {
+        if (!config.spotifyConsumerKey && !config.spotifyConsumerSecret) {
+          throw new Error('Spotify client not initialized');
+        }
+        spotifyClient = new SpotifyClient({
+          consumer: {
+            key: config.spotifyConsumerKey!,
+            secret: config.spotifyConsumerSecret!
+          }
+        });
+      }
+
+      try {
+        const coverUrl = await spotifyClient.getCoverArt(artistName, trackName);
+        // console.log('Retrieved cover URL:', coverUrl);
+        return {
+          coverUrl,
+          trackName: trackName,
+          albumName: metadata?.common.album || '',
+          artists: [artistName],
+        };
+      } catch (err) {
+        console.error('Failed to get music metadata:', err);
+        return {
+          coverUrl: '',
+          trackName: trackName,
+          albumName: metadata?.common.album || '',
+          artists: [artistName],
+        };
       }
     })
 })

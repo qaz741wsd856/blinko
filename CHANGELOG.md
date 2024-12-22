@@ -1,3 +1,43 @@
+## [0.29.4](https://github.com/blinko-space/blinko/compare/v0.29.3...v0.29.4) (2024-12-21)
+
+
+### Bug Fixes
+
+* update LoadingPage and SendButton components for improved UI ([f6c3c54](https://github.com/blinko-space/blinko/commit/f6c3c54f4b9a4120cfc143f787a7cdc4b91beb7c))
+
+## [0.29.3](https://github.com/blinko-space/blinko/compare/v0.29.2...v0.29.3) (2024-12-21)
+
+
+### Bug Fixes
+
+* enhance ScrollArea component and update attachment router ([2b34bfa](https://github.com/blinko-space/blinko/commit/2b34bfaa9c5f9813198670b7355392e2c02f1f4e))
+
+## [0.29.2](https://github.com/blinko-space/blinko/compare/v0.29.1...v0.29.2) (2024-12-21)
+
+
+### Bug Fixes
+
+* enhance resource management and UI updates ([5248a03](https://github.com/blinko-space/blinko/commit/5248a03efbd39ea9636a5327a1b16da8289d3c91))
+
+## [0.29.1](https://github.com/blinko-space/blinko/compare/v0.29.0...v0.29.1) (2024-12-21)
+
+
+### Bug Fixes
+
+* add error handling for missing account information in DBJob plugin ([fd9bf88](https://github.com/blinko-space/blinko/commit/fd9bf8850574c5f998050d31a9956bda1ef713a1))
+
+# [0.29.0](https://github.com/blinko-space/blinko/compare/v0.28.1...v0.29.0) (2024-12-21)
+
+
+### Bug Fixes
+
+* update Chinese translations and enhance BlinkoMusicPlayer responsiveness ([838f26e](https://github.com/blinko-space/blinko/commit/838f26e6bba1b3c121ddc24093422d886b84c18c))
+
+
+### Features
+
+* add music metadata functionality and Spotify integration ([800cc73](https://github.com/blinko-space/blinko/commit/800cc73cee9f5c03b603975e2804964405409eef))
+
 ## [0.28.1](https://github.com/blinko-space/blinko/compare/v0.28.0...v0.28.1) (2024-12-21)
 
 

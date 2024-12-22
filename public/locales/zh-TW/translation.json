@@ -317,7 +317,7 @@
   "insert-row-above": "插入上文 1",
   "insert-row-below": "下面插入 1",
   "instant-rendering": "即时渲染",
-  "light-mode": "灯光模式",
+  "light-mode": "浅色模式",
   "line": "线路",
   "link": "链接",
   "link-ref": "链接参考",
@@ -362,6 +362,12 @@
   "upload-cancelled": "上傳已取消",
   "upload-failed": "上傳失敗",
   "import-from-bko-tip": "目前不支援上傳至 s3 進行還原。當您想要進行恢復操作時，請暫時停用 s3 選項。",
+  "music-settings": "音樂設定",
+  "enter-spotify-consumer-secret": "輸入 Spotify 用戶秘密",
+  "spotify-consumer-secret": "Spotify 用戶端秘鑰",
+  "enter-spotify-consumer-key": "輸入 Spotify 使用者金鑰",
+  "spotify-consumer-key-tip": "以前用來取得 MP3 音樂封面",
+  "spotify-consumer-key-tip-2": "從 https://developer.spotify.com/ 取得 API 金鑰",
   "edit-time": "編輯時間",
   "ai-write": "AI 寫",
   "download": "下載",
@@ -377,5 +383,8 @@
   "cloud-file": "雲端檔案",
   "move-to-parent": "移至上層目錄",
   "no-resources-found": "找不到資源",
-  "operation-in-progress": "正在進行操作"
+  "operation-in-progress": "正在進行操作",
+  "new-folder": "新資料夾",
+  "folder-name-required": "需要資料夾名稱",
+  "folder-name-exists": "資料夾名稱已存在"
 }
