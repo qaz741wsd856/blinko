@@ -1,3 +1,18 @@
+## [0.29.6](https://github.com/blinko-space/blinko/compare/v0.29.5...v0.29.6) (2024-12-22)
+
+
+### Bug Fixes
+
+* add thumbnail generation for images in S3 file API ([36632a4](https://github.com/blinko-space/blinko/commit/36632a49121a94aa48d1e605d90b09aec1a99fcb))
+* improve audio rendering and music manager logic ([dfa3144](https://github.com/blinko-space/blinko/commit/dfa3144f7bf47180b4c48e6d4745bd2db52a0934))
+
+## [0.29.5](https://github.com/blinko-space/blinko/compare/v0.29.4...v0.29.5) (2024-12-22)
+
+
+### Bug Fixes
+
+* add new translations and enhance audio rendering component ([ac0009a](https://github.com/blinko-space/blinko/commit/ac0009aecdfa7eb137551c8e15fbc092e93eaa57))
+
 ## [0.29.4](https://github.com/blinko-space/blinko/compare/v0.29.3...v0.29.4) (2024-12-21)
 
 
