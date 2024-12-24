@@ -1,3 +1,17 @@
+## [0.29.8](https://github.com/blinko-space/blinko/compare/v0.29.7...v0.29.8) (2024-12-23)
+
+
+### Bug Fixes
+
+* update BlinkoMusicPlayer width for improved responsiveness ([f73827b](https://github.com/blinko-space/blinko/commit/f73827b2ad3e8c6f00cd75fcc6a62e5f365df23c))
+
+## [0.29.7](https://github.com/blinko-space/blinko/compare/v0.29.6...v0.29.7) (2024-12-23)
+
+
+### Bug Fixes
+
+* update layout of share note card for improved responsiveness ([e6b97d5](https://github.com/blinko-space/blinko/commit/e6b97d5c643d04c37a0da48300acdf606ae5e88d))
+
 ## [0.29.6](https://github.com/blinko-space/blinko/compare/v0.29.5...v0.29.6) (2024-12-22)
 
 
