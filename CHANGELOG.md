@@ -1,3 +1,31 @@
+## [0.30.3](https://github.com/blinko-space/blinko/compare/v0.30.2...v0.30.3) (2024-12-24)
+
+
+### Bug Fixes
+
+* enhance audio metadata retrieval and update base store ([f28b426](https://github.com/blinko-space/blinko/commit/f28b4267c172173965f10030458f1e761b17610f))
+
+## [0.30.2](https://github.com/blinko-space/blinko/compare/v0.30.1...v0.30.2) (2024-12-24)
+
+
+### Bug Fixes
+
+* update translations and enhance analytics page ([0933157](https://github.com/blinko-space/blinko/commit/0933157e8aae62bee07fa629a6f893d7da73222f))
+
+## [0.30.1](https://github.com/blinko-space/blinko/compare/v0.30.0...v0.30.1) (2024-12-24)
+
+
+### Bug Fixes
+
+* add file upload and delete endpoints to OpenAPI specification ([4258fc8](https://github.com/blinko-space/blinko/commit/4258fc8d6f3a19c34ebc6caa7787acc6b95cdace))
+
+# [0.30.0](https://github.com/blinko-space/blinko/compare/v0.29.8...v0.30.0) (2024-12-24)
+
+
+### Features
+
+* support analytics page ([3743946](https://github.com/blinko-space/blinko/commit/37439467edc428b5551f1c991e11a50470493e5c))
+
 ## [0.29.8](https://github.com/blinko-space/blinko/compare/v0.29.7...v0.29.8) (2024-12-23)
 
 

@@ -27,6 +27,12 @@ export class BaseStore implements Store {
       icon: 'hugeicons:note'
     },
     {
+      title: "analytics",
+      href: '/analytics',
+      hiddenMobile: true,
+      icon: 'lucide:bar-chart-2'
+    },
+    {
       title: "resources",
       href: '/resources',
       icon: 'solar:database-linear'
