@@ -1,3 +1,34 @@
+## [0.30.7](https://github.com/blinko-space/blinko/compare/v0.30.6...v0.30.7) (2024-12-26)
+
+
+### Bug Fixes
+
+* adjust note merging order in BlinkoStore ([e208124](https://github.com/blinko-space/blinko/commit/e208124caaac6bba182fa6ba05a6e17010bc97c0))
+
+## [0.30.6](https://github.com/blinko-space/blinko/compare/v0.30.5...v0.30.6) (2024-12-26)
+
+
+### Bug Fixes
+
+* support custom background ([de49166](https://github.com/blinko-space/blinko/commit/de491669c41cf4629719bcc97bf2720e37d24980))
+* update HeatMap color scheme for improved visibility [#373](https://github.com/blinko-space/blinko/issues/373) ([dad00c9](https://github.com/blinko-space/blinko/commit/dad00c9f9d745ab527b66c509ea845299aa4267a)), closes [#161b22](https://github.com/blinko-space/blinko/issues/161b22) [#0e4429](https://github.com/blinko-space/blinko/issues/0e4429) [#006d32](https://github.com/blinko-space/blinko/issues/006d32) [#26a641](https://github.com/blinko-space/blinko/issues/26a641) [#39d353](https://github.com/blinko-space/blinko/issues/39d353) [#ebedf0](https://github.com/blinko-space/blinko/issues/ebedf0) [#9be9a8](https://github.com/blinko-space/blinko/issues/9be9a8) [#40c463](https://github.com/blinko-space/blinko/issues/40c463) [#30a14](https://github.com/blinko-space/blinko/issues/30a14) [#216e39](https://github.com/blinko-space/blinko/issues/216e39)
+
+## [0.30.5](https://github.com/blinko-space/blinko/compare/v0.30.4...v0.30.5) (2024-12-26)
+
+
+### Bug Fixes
+
+* improve note date filtering and clean up PWA configuration [#376](https://github.com/blinko-space/blinko/issues/376) ([5e2cf71](https://github.com/blinko-space/blinko/commit/5e2cf710ed20728c5469869925df28d597673103))
+
+## [0.30.4](https://github.com/blinko-space/blinko/compare/v0.30.3...v0.30.4) (2024-12-26)
+
+
+### Bug Fixes
+
+* enhance offline capabilities and update translations ([efa0f82](https://github.com/blinko-space/blinko/commit/efa0f8220fd3368c592aec6a4b4b31a6eac2691f))
+* enhance PWA configuration and update dependencies ([c7c56f7](https://github.com/blinko-space/blinko/commit/c7c56f7c660301a9af29a68853ea7fb8f449730a))
+* update PWA caching strategy and clean up seed data ([80ccee7](https://github.com/blinko-space/blinko/commit/80ccee7fee53797f9ace7b56c1bd84d0aee0721c))
+
 ## [0.30.3](https://github.com/blinko-space/blinko/compare/v0.30.2...v0.30.3) (2024-12-24)
 
 

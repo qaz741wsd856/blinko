@@ -300,5 +300,14 @@
   "analytics": "Análise",
   "tag-distribution": "Distribuição de Tags",
   "other-tags": "Outras etiquetas",
-  "tue": "Ter."
+  "tue": "Ter.",
+  "offline-status": "Modo offline",
+  "offline-title": "Você está offline",
+  "offline-description": "Por favor, verifique a sua conexão à internet e tente novamente.",
+  "retry": "Tentar novamente",
+  "back-to-home": "De volta para casa",
+  "offline": "Offline",
+  "close-background-animation": "Fechar Animação de Fundo",
+  "custom-bg-tip": "Acesse https://www.shadergradient.co/ para criar seu próprio fundo de gradiente.",
+  "custom-background-url": "Fundo Personalizado"
 }
