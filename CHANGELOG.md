@@ -1,3 +1,31 @@
+## [0.31.3](https://github.com/blinko-space/blinko/compare/v0.31.2...v0.31.3) (2024-12-27)
+
+
+### Bug Fixes
+
+* enhance sharing functionality in CardHeader component ([b2d0ed6](https://github.com/blinko-space/blinko/commit/b2d0ed62ef1de3df951ed6f7267aba17d960302b))
+
+## [0.31.2](https://github.com/blinko-space/blinko/compare/v0.31.1...v0.31.2) (2024-12-27)
+
+
+### Bug Fixes
+
+* add 'shared' translation key across multiple languages and update share link expired messages ([176c820](https://github.com/blinko-space/blinko/commit/176c820068d2555966ef45526815c1c9ce00d4fa))
+
+## [0.31.1](https://github.com/blinko-space/blinko/compare/v0.31.0...v0.31.1) (2024-12-27)
+
+
+### Bug Fixes
+
+* upsert api accachments size type issue ([84ec849](https://github.com/blinko-space/blinko/commit/84ec84971f41533716d0d099e1c842ecad1e1451))
+
+# [0.31.0](https://github.com/blinko-space/blinko/compare/v0.30.7...v0.31.0) (2024-12-27)
+
+
+### Features
+
+* enhance note sharing functionality and update translations [#368](https://github.com/blinko-space/blinko/issues/368) [#356](https://github.com/blinko-space/blinko/issues/356) [#362](https://github.com/blinko-space/blinko/issues/362) ([9795776](https://github.com/blinko-space/blinko/commit/9795776edf0cd73b132a6297b621cf7fc3a481cb))
+
 ## [0.30.7](https://github.com/blinko-space/blinko/compare/v0.30.6...v0.30.7) (2024-12-26)
 
 
