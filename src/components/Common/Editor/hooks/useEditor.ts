@@ -123,7 +123,6 @@ export const useEditorInit = (
       store.noteListByIds.call({ ids: store.references })
     }
   }, []);
-
 };
 
 
@@ -131,7 +130,7 @@ export const useEditorEvents = (store: EditorStore) => {
   useEffect(() => {
     eventBus.on('editor:clear', store.clearMarkdown);
     eventBus.on('editor:insert', store.insertMarkdown);
-    eventBus.on('editor:deleteLastChar', store.deleteLastChar);
+    eventBus.on('editor:replace', store.replaceMarkdown);
     eventBus.on('editor:focus', store.focus);
     eventBus.on('editor:setViewMode', (mode) => {
       store.viewMode = mode
@@ -143,7 +142,7 @@ export const useEditorEvents = (store: EditorStore) => {
     return () => {
       eventBus.off('editor:clear', store.clearMarkdown);
       eventBus.off('editor:insert', store.insertMarkdown);
-      eventBus.off('editor:deleteLastChar', store.deleteLastChar);
+      eventBus.off('editor:replace', store.replaceMarkdown);
       eventBus.off('editor:focus', store.focus);
       eventBus.off('editor:setViewMode', (mode) => {
         store.viewMode = mode
@@ -165,17 +164,6 @@ export const useEditorFiles = (
     }
   }, [originFiles]);
 };
-
-// export const useEditorPaste = (store: EditorStore, cardRef: React.RefObject<any>) => {
-//   const pastedFiles = usePasteFile(cardRef);
-//   useEffect(() => {
-//     if (pastedFiles) {
-//       store.uploadFiles(pastedFiles);
-//     }
-//   }, [pastedFiles]);
-// };
-
-
 
 export const useEditorHeight = (
   onHeightChange: (() => void) | undefined,
