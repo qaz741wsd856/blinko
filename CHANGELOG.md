@@ -1,3 +1,31 @@
+## [0.31.9](https://github.com/blinko-space/blinko/compare/v0.31.8...v0.31.9) (2024-12-30)
+
+
+### Bug Fixes
+
+* restrict registration settings to superadmin only [#387](https://github.com/blinko-space/blinko/issues/387) ([75aac53](https://github.com/blinko-space/blinko/commit/75aac53a21e44b9ff0205cec992243b10176d289))
+
+## [0.31.8](https://github.com/blinko-space/blinko/compare/v0.31.7...v0.31.8) (2024-12-30)
+
+
+### Bug Fixes
+
+* streamline image rendering and enhance thumbnail generation [#384](https://github.com/blinko-space/blinko/issues/384) ([4bafa56](https://github.com/blinko-space/blinko/commit/4bafa56a9ea8c00a5497da3c072053bfeec3a6e0))
+
+## [0.31.7](https://github.com/blinko-space/blinko/compare/v0.31.6...v0.31.7) (2024-12-30)
+
+
+### Bug Fixes
+
+* change mobile create dialog min height ([bca71fe](https://github.com/blinko-space/blinko/commit/bca71fec9ce15287691189e999c33f0bcbf11675))
+
+## [0.31.6](https://github.com/blinko-space/blinko/compare/v0.31.5...v0.31.6) (2024-12-30)
+
+
+### Bug Fixes
+
+* add 'move-down' functionality and update translations [#375](https://github.com/blinko-space/blinko/issues/375) ([996f045](https://github.com/blinko-space/blinko/commit/996f0452dcd3aee27ca2a33866af510f7d63e495))
+
 ## [0.31.5](https://github.com/blinko-space/blinko/compare/v0.31.4...v0.31.5) (2024-12-29)
 
 
