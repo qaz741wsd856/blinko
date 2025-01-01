@@ -95,7 +95,7 @@ export class UserStore implements User, Store {
   async initializeSettings(setTheme: (theme: string) => void, i18n: any) {
     const savedLanguage = localStorage.getItem('userLanguage');
     const savedTheme = localStorage.getItem('userTheme');
-    
+
     if (savedLanguage && !this.languageInitialized) {
       RootStore.Get(BaseStore).changeLanugage(i18n, savedLanguage);
       this.languageInitialized = true;
@@ -108,12 +108,30 @@ export class UserStore implements User, Store {
       this.updatePWAColor(themeToSet);
       this.themeInitialized = true;
     }
-    console.log(this.isLogin,'isLogin')
+
+    const darkElement = document.querySelector('.dark')
+    const lightElement = document.querySelector('.light')
+    const config = await this.blinko.config.call();
+    
+    if (config?.themeColor && config?.themeForegroundColor) {
+      if (darkElement) {
+        //@ts-ignore
+        darkElement.style.setProperty('--primary', config.themeColor)
+        //@ts-ignore
+        darkElement.style.setProperty('--primary-foreground', config.themeForegroundColor)
+      }
+      if (lightElement) {
+        //@ts-ignore
+        lightElement.style.setProperty('--primary', config.themeColor)
+        //@ts-ignore
+        lightElement.style.setProperty('--primary-foreground', config.themeForegroundColor)
+      }
+    }
+
     if (this.isLogin) {
       try {
-        const config = await this.blinko.config.call();
         console.log('initializeSettings in login loaded')
-        
+
         if (config) {
           if (config.language && config.language !== savedLanguage) {
             localStorage.setItem('userLanguage', config.language);
@@ -148,7 +166,7 @@ export class UserStore implements User, Store {
       const userStore = RootStore.Get(UserStore);
       if (!userStore.isLogin && session && session.user) {
         //@ts-ignore
-        userStore.ready({ ...session.user});
+        userStore.ready({ ...session.user });
         this.initializeSettings(setTheme, i18n);
         userStore.userInfo.call(Number(this.id))
       }

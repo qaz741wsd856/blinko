@@ -25,7 +25,9 @@ export const ZUserPerferConfigKey = z.union([
   z.literal('webhookEndpoint'),
   z.literal('toolbarVisibility'),
   z.literal('twoFactorEnabled'),
-  z.literal('twoFactorSecret')
+  z.literal('twoFactorSecret'),
+  z.literal('themeColor'),
+  z.literal('themeForegroundColor')
 ]);
 
 export const ZConfigKey = z.union([
@@ -55,10 +57,24 @@ export const ZConfigKey = z.union([
   z.literal('spotifyConsumerSecret'),
   z.literal('isCloseBackgroundAnimation'),
   z.literal('customBackgroundUrl'),
+  z.literal('oauth2Providers'),
   ZUserPerferConfigKey
 ]);
 
 export type ConfigKey = z.infer<typeof ZConfigKey>;
+
+export const ZOAuth2ProviderSchema = z.object({
+  id: z.string(),
+  name: z.string(),
+  icon: z.string().optional(),
+  wellKnown: z.string().optional(),
+  scope: z.string().optional(),
+  authorizationUrl: z.string().optional(),
+  tokenUrl: z.string(),
+  userinfoUrl: z.string(),
+  clientId: z.string(),
+  clientSecret: z.string(),
+});
 
 export const ZConfigSchema = z.object({
   isAutoArchived: z.boolean().optional(),
@@ -95,11 +111,14 @@ export const ZConfigSchema = z.object({
   excludeEmbeddingTagId: z.number().optional(),
   language: z.any().optional(),
   theme: z.any().optional(),
+  themeColor: z.any().optional(),
+  themeForegroundColor: z.any().optional(),
   webhookEndpoint: z.any().optional(),
   twoFactorEnabled: z.boolean().optional(),
   twoFactorSecret: z.string().optional(),
   spotifyConsumerKey: z.string().optional(),
   spotifyConsumerSecret: z.string().optional(),
+  oauth2Providers: z.array(ZOAuth2ProviderSchema).optional(),
 });
 
 export type GlobalConfig = z.infer<typeof ZConfigSchema>;

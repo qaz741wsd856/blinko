@@ -1,3 +1,37 @@
+## [0.32.3](https://github.com/blinko-space/blinko/compare/v0.32.2...v0.32.3) (2024-12-31)
+
+
+### Bug Fixes
+
+* mobile themecolor ([569287d](https://github.com/blinko-space/blinko/commit/569287df5ca9a34c5c55995efadce90fe24f3b2f))
+
+## [0.32.2](https://github.com/blinko-space/blinko/compare/v0.32.1...v0.32.2) (2024-12-31)
+
+
+### Bug Fixes
+
+* add theme color customization and update translations ([a8faff6](https://github.com/blinko-space/blinko/commit/a8faff649b029bfb28b57be10e30c74a1afaf73e))
+
+## [0.32.1](https://github.com/blinko-space/blinko/compare/v0.32.0...v0.32.1) (2024-12-31)
+
+
+### Bug Fixes
+
+* enhance AboutSetting component and clean up unused code [#367](https://github.com/blinko-space/blinko/issues/367) ([dda53a8](https://github.com/blinko-space/blinko/commit/dda53a80b7e47561d9a27c31c3c9cceade830d7a))
+
+# [0.32.0](https://github.com/blinko-space/blinko/compare/v0.31.9...v0.32.0) (2024-12-31)
+
+
+### Bug Fixes
+
+* add community translations and enhance AboutSetting component ([46150d6](https://github.com/blinko-space/blinko/commit/46150d6cf01af1599e61668177a4052df1bb7f29))
+
+
+### Features
+
+* enhance OAuth2 provider integration and update translations ([c1ad05c](https://github.com/blinko-space/blinko/commit/c1ad05cfd731c0578efb540e079bf519c2cbc6ba))
+* implement tabbed settings interface with dynamic visibility based on user roles ([559eb23](https://github.com/blinko-space/blinko/commit/559eb23858a161a4dc681c453ab1f14fe70f6f1d))
+
 ## [0.31.9](https://github.com/blinko-space/blinko/compare/v0.31.8...v0.31.9) (2024-12-30)
 
 
