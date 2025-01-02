@@ -1,3 +1,45 @@
+## [0.32.9](https://github.com/blinko-space/blinko/compare/v0.32.8...v0.32.9) (2025-01-01)
+
+
+### Bug Fixes
+
+* update HashtagButton to trigger onChange after inserting a hashtag ([ce71596](https://github.com/blinko-space/blinko/commit/ce71596024567f7575b73b0c48df596003ec75ae))
+
+## [0.32.8](https://github.com/blinko-space/blinko/compare/v0.32.7...v0.32.8) (2025-01-01)
+
+
+### Bug Fixes
+
+* enhance settings page layout and styling ([8b804ee](https://github.com/blinko-space/blinko/commit/8b804eebf3045402ece22f39c6c44b266859f575))
+
+## [0.32.7](https://github.com/blinko-space/blinko/compare/v0.32.6...v0.32.7) (2025-01-01)
+
+
+### Bug Fixes
+
+* add 'login-type' translation key across multiple languages ([0c01aa2](https://github.com/blinko-space/blinko/commit/0c01aa28213d23d3c8d43182469b8dd75cebfd12))
+
+## [0.32.6](https://github.com/blinko-space/blinko/compare/v0.32.5...v0.32.6) (2025-01-01)
+
+
+### Bug Fixes
+
+* enhance list item rendering in Markdown component ([34f7425](https://github.com/blinko-space/blinko/commit/34f74256e22218161bb382efe1d5bec106131aee))
+
+## [0.32.5](https://github.com/blinko-space/blinko/compare/v0.32.4...v0.32.5) (2025-01-01)
+
+
+### Bug Fixes
+
+* implement account linking functionality [#391](https://github.com/blinko-space/blinko/issues/391) ([c774af9](https://github.com/blinko-space/blinko/commit/c774af93ec9bdf4e3e51bdde8415fe420a24f177))
+
+## [0.32.4](https://github.com/blinko-space/blinko/compare/v0.32.3...v0.32.4) (2025-01-01)
+
+
+### Bug Fixes
+
+* implement TAB key functionality in editor for better text formatting ([8cb0dd5](https://github.com/blinko-space/blinko/commit/8cb0dd5656d8f726c4004f09dc304862b1de92ab))
+
 ## [0.32.3](https://github.com/blinko-space/blinko/compare/v0.32.2...v0.32.3) (2024-12-31)
 
 
