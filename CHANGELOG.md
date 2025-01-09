@@ -1,3 +1,115 @@
+## [0.34.1](https://github.com/blinko-space/blinko/compare/v0.34.0...v0.34.1) (2025-01-08)
+
+
+### Bug Fixes
+
+* remove unused fallback-development.js and enhance CommentButton component ([9cfc1a1](https://github.com/blinko-space/blinko/commit/9cfc1a181a1588bd0e922831fbc532e33b0d0f50))
+
+# [0.34.0](https://github.com/blinko-space/blinko/compare/v0.33.3...v0.34.0) (2025-01-08)
+
+
+### Features
+
+* add comments feature and enhance user experience ([4a0c830](https://github.com/blinko-space/blinko/commit/4a0c830ecec1a96d1d8cf425e2ce5e2b1feb29a0))
+
+## [0.33.3](https://github.com/blinko-space/blinko/compare/v0.33.2...v0.33.3) (2025-01-08)
+
+
+### Bug Fixes
+
+* update query parameter for row count in RSS routes ([d6677ee](https://github.com/blinko-space/blinko/commit/d6677ee3494611d831f964d04f7266c60b770669))
+
+## [0.33.2](https://github.com/blinko-space/blinko/compare/v0.33.1...v0.33.2) (2025-01-08)
+
+
+### Bug Fixes
+
+* update ScrollArea margin classes for better layout consistency ([90194bf](https://github.com/blinko-space/blinko/commit/90194bfd31a87c6f8ea5370653ee36ba06ee81f2))
+
+## [0.33.1](https://github.com/blinko-space/blinko/compare/v0.33.0...v0.33.1) (2025-01-08)
+
+
+### Bug Fixes
+
+* move generateFeed function to helper module ([b2dbba8](https://github.com/blinko-space/blinko/commit/b2dbba8ce62a4040d8a1bcf527864ff9bf184e0a))
+
+# [0.33.0](https://github.com/blinko-space/blinko/compare/v0.32.23...v0.33.0) (2025-01-08)
+
+
+### Features
+
+* support RSS ([6aade1c](https://github.com/blinko-space/blinko/commit/6aade1c6714aa11735d588eb0e7a7c86eed1a1cc))
+
+## [0.32.23](https://github.com/blinko-space/blinko/compare/v0.32.22...v0.32.23) (2025-01-08)
+
+
+### Bug Fixes
+
+* update image rendering styles and vditor CSS for better responsiveness ([5c3c41c](https://github.com/blinko-space/blinko/commit/5c3c41c1ef3cbed318cd09702c75090dc8d27e8d))
+
+## [0.32.22](https://github.com/blinko-space/blinko/compare/v0.32.21...v0.32.22) (2025-01-08)
+
+
+### Bug Fixes
+
+* update Chinese translation for 'outline' in translation.json ([503093a](https://github.com/blinko-space/blinko/commit/503093af96be36463e7a4905ee338a1fcf4f5605))
+
+## [0.32.21](https://github.com/blinko-space/blinko/compare/v0.32.20...v0.32.21) (2025-01-08)
+
+
+### Bug Fixes
+
+* add 'max home page width' setting and translations across multiple languages ([344b9e9](https://github.com/blinko-space/blinko/commit/344b9e9dae34b6b2bb56358547c6e8c844decfa7))
+
+## [0.32.20](https://github.com/blinko-space/blinko/compare/v0.32.19...v0.32.20) (2025-01-08)
+
+
+### Bug Fixes
+
+* add 'close daily review' feature across multiple languages and update settings component [#360](https://github.com/blinko-space/blinko/issues/360) ([99a4f90](https://github.com/blinko-space/blinko/commit/99a4f90912f5b00a559b250539f994c881cd55a4))
+
+## [0.32.19](https://github.com/blinko-space/blinko/compare/v0.32.18...v0.32.19) (2025-01-08)
+
+
+### Bug Fixes
+
+* comment out Indent and Outdent buttons in EditorToolbar ([1ad1897](https://github.com/blinko-space/blinko/commit/1ad18975bdac3efeaf464d859af71aa8c006242a))
+
+## [0.32.18](https://github.com/blinko-space/blinko/compare/v0.32.17...v0.32.18) (2025-01-08)
+
+
+### Bug Fixes
+
+* adjust ScrollArea margin for improved layout on Home page ([16aca50](https://github.com/blinko-space/blinko/commit/16aca50d16dfaebb33345692fbfa4df4709827bf))
+
+## [0.32.17](https://github.com/blinko-space/blinko/compare/v0.32.16...v0.32.17) (2025-01-08)
+
+
+### Bug Fixes
+
+* Merge pull request [#408](https://github.com/blinko-space/blinko/issues/408) from cedhuf/main ([b02c1ad](https://github.com/blinko-space/blinko/commit/b02c1ade7540155957f0ce20f20eddb6b6461b43))
+
+## [0.32.16](https://github.com/blinko-space/blinko/compare/v0.32.15...v0.32.16) (2025-01-08)
+
+
+### Bug Fixes
+
+* Merge pull request [#409](https://github.com/blinko-space/blinko/issues/409) from hnico21/patch-2 ([669ae76](https://github.com/blinko-space/blinko/commit/669ae767171a8dbc2289691a7cc66e80769a3fad))
+
+## [0.32.15](https://github.com/blinko-space/blinko/compare/v0.32.14...v0.32.15) (2025-01-08)
+
+
+### Bug Fixes
+
+* Merge pull request [#404](https://github.com/blinko-space/blinko/issues/404) from hnico21/patch-1 ([76b5b7c](https://github.com/blinko-space/blinko/commit/76b5b7c56358b46dfc28f43885131aa76c813d03))
+
+## [0.32.14](https://github.com/blinko-space/blinko/compare/v0.32.13...v0.32.14) (2025-01-08)
+
+
+### Bug Fixes
+
+* enhance UI components and editor functionality ([aa4d3de](https://github.com/blinko-space/blinko/commit/aa4d3de4d325c929358e4fcb7329eea7f7343d2d))
+
 ## [0.32.13](https://github.com/blinko-space/blinko/compare/v0.32.12...v0.32.13) (2025-01-07)
 
 

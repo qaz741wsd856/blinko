@@ -360,5 +360,13 @@
   "link-account-warning": "Por favor, observe que se você vincular suas contas, os dados da conta atual não serão sincronizados com a conta vinculada.",
   "unlink-account": "Desvincular Conta",
   "unlink-account-tips": "Você confirma o acesso a todas as associações com esta conta?",
-  "login-type": "Tipo de Login"
+  "login-type": "Tipo de Login",
+  "close-daily-review": "Revisão Diária Encerrar",
+  "max-home-page-width": "Largura Máxima da Página Inicial",
+  "max-home-page-width-tip": "Se configurado como 0, é a largura máxima.",
+  "no-comments-yet": "Ainda sem comentários",
+  "author": "Autor",
+  "from": "De",
+  "comment": "Comentário",
+  "reply-to": "Responder a"
 }

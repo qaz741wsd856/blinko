@@ -4,9 +4,7 @@ import { Copy } from "../Common/Copy";
 import { LeftCickMenu } from "../BlinkoRightClickMenu";
 import { BlinkoStore } from '@/store/blinkoStore';
 import { Note } from '@/server/types';
-import { ToastPlugin } from "@/store/module/Toast/Toast";
 import { RootStore } from '@/store';
-import copy from "copy-to-clipboard";
 import dayjs from '@/lib/dayjs';
 import { useTranslation } from 'react-i18next';
 import { _ } from '@/lib/lodash';
@@ -14,6 +12,7 @@ import { useIsIOS } from '@/lib/hooks';
 import { DialogStore } from '@/store/module/Dialog';
 import { BlinkoShareDialog } from '../BlinkoShareDialog';
 import { observer } from 'mobx-react-lite';
+import { CommentButton } from './commentButton';
 
 interface CardHeaderProps {
   blinkoItem: Note;
@@ -71,8 +70,18 @@ export const CardHeader = ({ blinkoItem, blinko, isShareMode, isExpanded }: Card
           content={blinkoItem.content + `\n${blinkoItem.attachments?.map(i => window.location.origin + i.path).join('\n')}`}
         />
 
+        <CommentButton blinkoItem={blinkoItem} />
+
+        {isShareMode && (
+          <Tooltip content="RSS">
+            <Icon onClick={e => {
+              window.open(window.location.origin + `/api/rss/${blinkoItem.accountId}/atom?row=20`)
+            }} icon="mingcute:rss-2-fill" className='ml-2 cursor-pointer hover:text-primary' width="16" height="16" />
+          </Tooltip>
+        )}
+
         {!isShareMode && (
-          <ShareButton blinkoItem={blinkoItem} blinko={blinko} isIOSDevice={isIOSDevice} />
+          <ShareButton blinkoItem={blinkoItem} isIOSDevice={isIOSDevice} />
         )}
 
         {blinkoItem.isTop && (
@@ -95,8 +104,9 @@ export const CardHeader = ({ blinkoItem, blinko, isShareMode, isExpanded }: Card
   );
 };
 
-const ShareButton = observer(({ blinkoItem, blinko, isIOSDevice }: { blinkoItem: Note, blinko: BlinkoStore, isIOSDevice: boolean }) => {
+const ShareButton = observer(({ blinkoItem, isIOSDevice }: { blinkoItem: Note, isIOSDevice: boolean }) => {
   const { t } = useTranslation()
+  const blinko = RootStore.Get(BlinkoStore);
   return (
     <Tooltip content={t('share')}>
       <Icon
@@ -108,6 +118,7 @@ const ShareButton = observer(({ blinkoItem, blinko, isIOSDevice }: { blinkoItem:
           : 'opacity-0 group-hover/card:opacity-100 group-hover/card:translate-x-0 translate-x-1'
           }`}
         onClick={async (e) => {
+          e.stopPropagation()
           blinko.curSelectedNote = _.cloneDeep(blinkoItem)
           RootStore.Get(DialogStore).setData({
             isOpen: true,
@@ -125,3 +136,4 @@ const ShareButton = observer(({ blinkoItem, blinko, isIOSDevice }: { blinkoItem:
     </Tooltip>
   );
 });
+

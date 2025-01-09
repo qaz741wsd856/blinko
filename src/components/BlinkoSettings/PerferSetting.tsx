@@ -19,6 +19,7 @@ export const PerferSetting = observer(() => {
   const isPc = useMediaQuery('(min-width: 768px)')
   const blinko = RootStore.Get(BlinkoStore)
   const [textLength, setTextLength] = useState(blinko.config.value?.textFoldLength?.toString() || '500');
+  const [maxHomePageWidth, setMaxHomePageWidth] = useState(blinko.config.value?.maxHomePageWidth?.toString() || '0');
   const [customBackgroundUrl, setCustomBackgroundUrl] = useState(blinko.config.value?.customBackgroundUrl || '');
 
   useEffect(() => {
@@ -103,6 +104,35 @@ export const PerferSetting = observer(() => {
       />} />
 
     <Item
+      leftContent={<div className="flex flex-col">
+        <div>{t('max-home-page-width')}</div>
+        <div className="text-xs text-default-400">{t('max-home-page-width-tip')}</div>
+      </div>}
+      rightContent={
+        <div className="flex items-center gap-2">
+          <Input
+            type="number"
+            size='sm'
+            className='w-20'
+            value={maxHomePageWidth}
+            onChange={e => setMaxHomePageWidth(e.target.value)}
+            onBlur={e => {
+              const value = parseInt(e.target.value);
+              if (!isNaN(value)) {
+                PromiseCall(api.config.update.mutate({
+                  key: 'maxHomePageWidth',
+                  value: value
+                }));
+              }
+            }}
+            min={0}
+          />
+          <span className="text-sm text-default-400">px</span>
+        </div>
+      }
+    />
+
+    <Item
       leftContent={<ItemWithTooltip
         content={t('text-fold-length')}
         toolTipContent={<div className="w-[300px] flex gap-2 py-4 px-2">
@@ -136,6 +166,24 @@ export const PerferSetting = observer(() => {
         </div>
       }
     />
+
+    <Item
+      leftContent={<>{t('close-daily-review')}</>}
+      rightContent={
+        <Tooltip content={<GradientBackground className="rounded-lg w-[200px] h-[100px]">
+          <div ></div>
+        </GradientBackground>}>
+          <Switch
+            isSelected={blinko.config.value?.isCloseDailyReview}
+            onChange={e => {
+              PromiseCall(api.config.update.mutate({
+                key: 'isCloseDailyReview',
+                value: e.target.checked
+              }))
+            }}
+          />
+        </Tooltip>
+      } />
 
     <Item
       type={isPc ? 'row' : 'col'}
