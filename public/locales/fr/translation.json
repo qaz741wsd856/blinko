@@ -432,5 +432,10 @@
   "author": "Auteur",
   "from": "De",
   "reply-to": "Répondre à",
-  "comment": "Commentaire"
+  "comment": "Commentaire",
+  "hub": "Nœud",
+  "home-site": "Site d'accueil",
+  "use-blinko-hub": "Utilisez Blinko Hub",
+  "full-screen": "Plein écran",
+  "exit-fullscreen": "Quitter le mode plein écran"
 }

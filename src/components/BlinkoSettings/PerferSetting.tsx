@@ -24,8 +24,9 @@ export const PerferSetting = observer(() => {
 
   useEffect(() => {
     setTextLength(blinko.config.value?.textFoldLength?.toString() || '500');
+    setMaxHomePageWidth(blinko.config.value?.maxHomePageWidth?.toString() || '0');
     setCustomBackgroundUrl(blinko.config.value?.customBackgroundUrl || '');
-  }, [blinko.config.value?.textFoldLength]);
+  }, [blinko.config.value?.textFoldLength, blinko.config.value?.maxHomePageWidth]);
 
 
   return <CollapsibleCard
@@ -170,19 +171,15 @@ export const PerferSetting = observer(() => {
     <Item
       leftContent={<>{t('close-daily-review')}</>}
       rightContent={
-        <Tooltip content={<GradientBackground className="rounded-lg w-[200px] h-[100px]">
-          <div ></div>
-        </GradientBackground>}>
-          <Switch
-            isSelected={blinko.config.value?.isCloseDailyReview}
-            onChange={e => {
-              PromiseCall(api.config.update.mutate({
-                key: 'isCloseDailyReview',
-                value: e.target.checked
-              }))
-            }}
-          />
-        </Tooltip>
+        <Switch
+          isSelected={blinko.config.value?.isCloseDailyReview}
+          onChange={e => {
+            PromiseCall(api.config.update.mutate({
+              key: 'isCloseDailyReview',
+              value: e.target.checked
+            }))
+          }}
+        />
       } />
 
     <Item
@@ -307,7 +304,20 @@ export const PerferSetting = observer(() => {
           }}
         />
       } />
-
+    <Item
+      leftContent={<>{t('use-blinko-hub')}</>}
+      rightContent={
+        <Switch
+          isSelected={blinko.config.value?.isUseBlinkoHub}
+          onChange={async e => {
+            await PromiseCall(api.config.update.mutate({
+              key: 'isUseBlinkoHub',
+              value: e.target.checked
+            }))
+            window.location.reload()
+          }}
+        />
+      } />
 
     <Item
       leftContent={<>{t('close-background-animation')}</>}

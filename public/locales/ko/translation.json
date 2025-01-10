@@ -439,5 +439,10 @@
   "no-comments-yet": "아직 댓글이 없습니다.",
   "author": "저자",
   "from": "에서",
-  "reply-to": "답장하기"
+  "reply-to": "답장하기",
+  "hub": "허브",
+  "home-site": "홈 사이트",
+  "use-blinko-hub": "Blinko 허브 사용",
+  "full-screen": "전체 화면",
+  "exit-fullscreen": "전체 화면 종료"
 }

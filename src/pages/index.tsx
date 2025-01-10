@@ -47,15 +47,15 @@ const Home = observer(() => {
         !blinko.noteList.isEmpty && <ScrollArea
           onBottom={() => blinko.onBottom()}
           style={{ height: store.showEditor ? `calc(100% - ${(isPc ? store.editorHeight : 0)}px)` : '100%' }}
-          className={`px-2 mt-0 md:mt-4 md:px-6 w-full h-full transition-all scroll-area md:mb-[70px]`}>
+          className={`px-2 mt-0 md:mt-4 md:px-6 w-full h-full transition-all scroll-area`}>
           <Masonry
             breakpointCols={{
               default: blinko.config?.value?.largeDeviceCardColumns ? Number(blinko.config?.value?.largeDeviceCardColumns) : 2,
               1280: blinko.config?.value?.mediumDeviceCardColumns ? Number(blinko.config?.value?.mediumDeviceCardColumns) : 2,
               768: blinko.config?.value?.smallDeviceCardColumns ? Number(blinko.config?.value?.smallDeviceCardColumns) : 1
             }}
-            className="my-masonry-grid"
-            columnClassName="my-masonry-grid_column">
+            className="card-masonry-grid"
+            columnClassName="card-masonry-grid_column">
             {
               blinko.noteList?.value?.map(i => {
                 return <BlinkoCard key={i.id} blinkoItem={i} />

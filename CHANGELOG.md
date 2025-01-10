@@ -1,3 +1,83 @@
+## [0.34.12](https://github.com/blinko-space/blinko/compare/v0.34.11...v0.34.12) (2025-01-09)
+
+
+### Bug Fixes
+
+* simplify comment schema and improve type definitions ([2145ab2](https://github.com/blinko-space/blinko/commit/2145ab26d6ce7b410105576fa94b2617178ffc97))
+
+## [0.34.11](https://github.com/blinko-space/blinko/compare/v0.34.10...v0.34.11) (2025-01-09)
+
+
+### Bug Fixes
+
+* update shareNoteList function to accept pagination parameters ([18fd8eb](https://github.com/blinko-space/blinko/commit/18fd8eb65f0063a199019c75cc76f30aac3ab450))
+* update shareNoteList function to accept pagination parameters ([019cdd5](https://github.com/blinko-space/blinko/commit/019cdd58514587202e8baeebadc327551ffb26b9))
+
+## [0.34.10](https://github.com/blinko-space/blinko/compare/v0.34.9...v0.34.10) (2025-01-09)
+
+
+### Bug Fixes
+
+* enhance editor functionality and localization support ([9821c64](https://github.com/blinko-space/blinko/commit/9821c64ee7b0ceb6efca0a8a9e492cd19ff8679b))
+* enhance localization and Blinko Hub integration ([ac7bbe7](https://github.com/blinko-space/blinko/commit/ac7bbe7a47b8c8a37df7e3f0a8b9fdb47ba648cf))
+
+## [0.34.9](https://github.com/blinko-space/blinko/compare/v0.34.8...v0.34.9) (2025-01-09)
+
+
+### Bug Fixes
+
+* change default state of isInsertBefore to false in AiTag component ([d158ed7](https://github.com/blinko-space/blinko/commit/d158ed732a06ea1f02909a330ba2bb312b0f608b))
+
+## [0.34.8](https://github.com/blinko-space/blinko/compare/v0.34.7...v0.34.8) (2025-01-09)
+
+
+### Bug Fixes
+
+* refine ScrollArea component usage in Home page ([dd36f58](https://github.com/blinko-space/blinko/commit/dd36f580c0ae70e28ff93c8aa748cc5a975a8154))
+* update ScrollArea component in Layout to enforce overflow styles ([eaf5a65](https://github.com/blinko-space/blinko/commit/eaf5a65f0e0fc9162e28de81f5b5fe05a19df203))
+
+## [0.34.7](https://github.com/blinko-space/blinko/compare/v0.34.6...v0.34.7) (2025-01-09)
+
+
+### Bug Fixes
+
+* update PerferSetting to include maxHomePageWidth in useEffect dependencies ([a6d5cd4](https://github.com/blinko-space/blinko/commit/a6d5cd44dfe1a90c5a4997287628b9de61bd6ee3))
+
+## [0.34.6](https://github.com/blinko-space/blinko/compare/v0.34.5...v0.34.6) (2025-01-09)
+
+
+### Bug Fixes
+
+* update ScrollArea component and layout styles ([21642f8](https://github.com/blinko-space/blinko/commit/21642f8fea65d5bad4ade326cbf0b4a9517cd7fe))
+
+## [0.34.5](https://github.com/blinko-space/blinko/compare/v0.34.4...v0.34.5) (2025-01-09)
+
+
+### Bug Fixes
+
+* update Tailwind CSS configuration and styles for improved theming [#418](https://github.com/blinko-space/blinko/issues/418) ([9f242fe](https://github.com/blinko-space/blinko/commit/9f242fe762028c670b67f8dd1f449c9a6af70334))
+
+## [0.34.4](https://github.com/blinko-space/blinko/compare/v0.34.3...v0.34.4) (2025-01-09)
+
+
+### Bug Fixes
+
+* enhance note retrieval logic with share password and expiry checks ([5c4da93](https://github.com/blinko-space/blinko/commit/5c4da930c1b73eeb680e3ede2a3e82eecc1accef))
+
+## [0.34.3](https://github.com/blinko-space/blinko/compare/v0.34.2...v0.34.3) (2025-01-09)
+
+
+### Bug Fixes
+
+* simplify image rendering logic in ImageRender component ([974b922](https://github.com/blinko-space/blinko/commit/974b9221ee6e5ec2d6857781bb9c179397223d17))
+
+## [0.34.2](https://github.com/blinko-space/blinko/compare/v0.34.1...v0.34.2) (2025-01-09)
+
+
+### Bug Fixes
+
+* enhance CommentButton component and update note router for comments ([0b8226b](https://github.com/blinko-space/blinko/commit/0b8226b8bfaaa0aa72a0b854982cc5254aa95630))
+
 ## [0.34.1](https://github.com/blinko-space/blinko/compare/v0.34.0...v0.34.1) (2025-01-08)
 
 

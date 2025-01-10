@@ -25,7 +25,7 @@
   color: var(--desc) !important;
 }
 
-.my-masonry-grid {
+.card-masonry-grid {
   display: -webkit-box;
   /* Not needed if autoprefixing */
   display: -ms-flexbox;
@@ -36,14 +36,14 @@
   width: auto;
 }
 
-.my-masonry-grid_column {
+.card-masonry-grid_column {
   padding-left: 10px;
   /* gutter size */
   background-clip: padding-box;
 }
 
 /* Style your items */
-.my-masonry-grid_column>div {
+.card-masonry-grid_column>div {
   /* change div to reference your elements you put in <Masonry> */
   margin-bottom: 10px;
 }
@@ -80,8 +80,8 @@ body {
 .blinko-tag {
   margin-right: 4px;
   margin-left: 4px;
-  color: var(--tag) !important;
-  background: var(--tag-foreground) !important;
+  color: var(--primary) !important;
+  background-color: color-mix(in srgb, var(--primary) 10%, transparent);
   border-radius: 7px;
   font-size: 13px;
   padding: 3px;
@@ -135,6 +135,7 @@ body {
 .ͼo.cm-focused .cm-matchingBracket {
   color: var(--desc);
 }
+
 
 @layer base {
   :root {

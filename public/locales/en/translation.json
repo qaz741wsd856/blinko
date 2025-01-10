@@ -460,5 +460,10 @@
   "reply-to": "Reply To",
   "author": "Author",
   "from": "From",
-  "no-comments-yet": "No comments yet"
+  "no-comments-yet": "No comments yet",
+  "hub": "Hub",
+  "home-site": "Home Site",
+  "use-blinko-hub": "Use Blinko Hub",
+  "full-screen": "Full Screen",
+  "exit-fullscreen": "Exit Fullscreen"
 }
