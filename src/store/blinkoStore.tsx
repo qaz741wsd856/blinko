@@ -315,7 +315,7 @@ export class BlinkoStore implements Store {
   updateDBTask = new PromiseState({
     function: async (isStart) => {
       if (isStart) {
-        await api.task.upsertTask.mutate({ time: '0 0 * * 0', type: 'start', task: DBBAK_TASK_NAME })
+        await api.task.upsertTask.mutate({ type: 'start', task: DBBAK_TASK_NAME })
       } else {
         await api.task.upsertTask.mutate({ type: 'stop', task: DBBAK_TASK_NAME })
       }
@@ -325,7 +325,7 @@ export class BlinkoStore implements Store {
   updateArchiveTask = new PromiseState({
     function: async (isStart) => {
       if (isStart) {
-        await api.task.upsertTask.mutate({ time: '0 0 * * 0', type: 'start', task: ARCHIVE_BLINKO_TASK_NAME })
+        await api.task.upsertTask.mutate({ type: 'start', task: ARCHIVE_BLINKO_TASK_NAME })
       } else {
         await api.task.upsertTask.mutate({ type: 'stop', task: ARCHIVE_BLINKO_TASK_NAME })
       }
@@ -448,5 +448,10 @@ export class BlinkoStore implements Store {
 
   constructor() {
     makeAutoObservable(this)
+  }
+
+  removeCreateAttachments(file: { name: string, }) {
+    this.createAttachmentsStorage.removeByFind(f => f.name === file.name);
+    this.updateTicker++;
   }
 }

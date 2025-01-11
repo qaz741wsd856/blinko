@@ -2,6 +2,10 @@ import { type Tag } from '@/server/types';
 import { _ } from './lodash';
 import i18n from './i18n';
 import { FileType } from '@/components/Common/Editor/type';
+import dayjs from 'dayjs';
+import { GlobalConfig } from '@/server/types';
+import { RootStore } from '@/store';
+import { BlinkoStore } from '@/store/blinkoStore';
 
 const valMap = {
   undefined: '',
@@ -124,9 +128,9 @@ export const helper = {
     const extension = helper.getFileExtension(filename) ?? ''
 
     if (mimeType != '') {
-      if (mimeType.startsWith('audio')) return 'audio'
-      if (mimeType.startsWith('video')) return 'video'
-      if (mimeType.startsWith('image')) return 'image'
+      if (mimeType?.startsWith('audio')) return 'audio'
+      if (mimeType?.startsWith('video')) return 'video'
+      if (mimeType?.startsWith('image')) return 'image'
     }
 
     if ('jpeg/jpg/png/bmp/tiff/tif/webp/svg'.includes(extension?.toLowerCase() ?? null)) {
@@ -261,10 +265,10 @@ export const helper = {
       }
     },
     cornTimeList: [
-      // {
-      //   label: i18n.t('every-1-minutes'),
-      //   value: '*/1 * * * *'
-      // },
+      ...(process.env.NODE_ENV == 'development' ? [{
+        label: '10 seconds',
+        value: '*/10 * * * * *'
+      }] : []),
       {
         label: i18n.t('every-day'),
         value: '0 0 * * *'
@@ -287,4 +291,24 @@ export const helper = {
       }
     ]
   }
+};
+
+export const formatTime = (
+  time: Date | string | number | undefined,
+  config: Partial<GlobalConfig>
+) => {
+  if (!time) return '';
+  const date = dayjs(time);
+  return config?.timeFormat === 'relative'
+    ? date.fromNow()
+    : date.format(config?.timeFormat ?? 'YYYY-MM-DD HH:mm:ss');
+};
+
+export const getDisplayTime = (
+  createdAt: Date | string | number | undefined,
+  updatedAt: Date | string | number | undefined,
+) => {
+  const config = (RootStore.Get(BlinkoStore).config.value || {}) as Partial<GlobalConfig>;
+  const timeToShow = config.isOrderByCreateTime ? createdAt : updatedAt;
+  return formatTime(timeToShow, config);
 };

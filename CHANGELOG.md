@@ -1,3 +1,66 @@
+## [0.35.8](https://github.com/blinko-space/blinko/compare/v0.35.7...v0.35.8) (2025-01-10)
+
+
+### Bug Fixes
+
+* update AiTag and AiPrompt for improved tag handling ([985ee23](https://github.com/blinko-space/blinko/commit/985ee23090b4d3f95f678f82b83bcdf34b1d787d))
+
+## [0.35.7](https://github.com/blinko-space/blinko/compare/v0.35.6...v0.35.7) (2025-01-10)
+
+
+### Bug Fixes
+
+* simplify attachment retrieval logic in attachmentsRouter ([4133ce2](https://github.com/blinko-space/blinko/commit/4133ce2601a2faa379ff147d515c05662d050711))
+
+## [0.35.6](https://github.com/blinko-space/blinko/compare/v0.35.5...v0.35.6) (2025-01-10)
+
+
+### Bug Fixes
+
+* update PromiseCall usage in settings components for consistency ([e3af65b](https://github.com/blinko-space/blinko/commit/e3af65ba798bbd90eb50a6c129edb5b14ef8800f))
+
+## [0.35.5](https://github.com/blinko-space/blinko/compare/v0.35.4...v0.35.5) (2025-01-10)
+
+
+### Bug Fixes
+
+* update Editor and ReferenceButton components for improved functionality ([2c9cae5](https://github.com/blinko-space/blinko/commit/2c9cae57971c2f6d38108fa8ee850d8146f2ee4a))
+
+## [0.35.4](https://github.com/blinko-space/blinko/compare/v0.35.3...v0.35.4) (2025-01-10)
+
+
+### Bug Fixes
+
+* update text color in BlinkoCard footer for improved readability ([0353b7a](https://github.com/blinko-space/blinko/commit/0353b7a367260f1766481f560e0d7eeb50ae8671))
+
+## [0.35.3](https://github.com/blinko-space/blinko/compare/v0.35.2...v0.35.3) (2025-01-10)
+
+
+### Bug Fixes
+
+* enhance BlinkoCard and reference handling ([b26a1fb](https://github.com/blinko-space/blinko/commit/b26a1fbf34b575f310f50fc927d0458c3854489d))
+
+## [0.35.2](https://github.com/blinko-space/blinko/compare/v0.35.1...v0.35.2) (2025-01-10)
+
+
+### Bug Fixes
+
+* update Home component styling for responsive design [#424](https://github.com/blinko-space/blinko/issues/424) ([2b9dab8](https://github.com/blinko-space/blinko/commit/2b9dab8f473d710a45a1a19bfc25a253787a2d78))
+
+## [0.35.1](https://github.com/blinko-space/blinko/compare/v0.35.0...v0.35.1) (2025-01-10)
+
+
+### Bug Fixes
+
+* update component styles and comment schema for consistency ([73e1674](https://github.com/blinko-space/blinko/commit/73e1674cda1ed3494bc45952455776da2d987e33))
+
+# [0.35.0](https://github.com/blinko-space/blinko/compare/v0.34.12...v0.35.0) (2025-01-10)
+
+
+### Features
+
+* enhance file upload and attachment handling [#426](https://github.com/blinko-space/blinko/issues/426) ([0d23c3f](https://github.com/blinko-space/blinko/commit/0d23c3f86cbd8bc3da302f706326a4bc2159d5ab))
+
 ## [0.34.12](https://github.com/blinko-space/blinko/compare/v0.34.11...v0.34.12) (2025-01-09)
 
 
