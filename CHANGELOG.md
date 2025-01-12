@@ -1,3 +1,38 @@
+## [0.36.3](https://github.com/blinko-space/blinko/compare/v0.36.2...v0.36.3) (2025-01-11)
+
+
+### Bug Fixes
+
+* enhance BlinkoCard and BlinkoFollowDialog components, improve public API caching ([7833ae8](https://github.com/blinko-space/blinko/commit/7833ae89cd94b4c3ad7e53281b56dba1300a6621))
+
+## [0.36.2](https://github.com/blinko-space/blinko/compare/v0.36.1...v0.36.2) (2025-01-11)
+
+
+### Bug Fixes
+
+* improve layout and follow handling in BlinkoFollowDialog and follows router ([6357219](https://github.com/blinko-space/blinko/commit/635721976d1f65b4ff4ec7128502823fa45aeaee))
+
+## [0.36.1](https://github.com/blinko-space/blinko/compare/v0.36.0...v0.36.1) (2025-01-11)
+
+
+### Bug Fixes
+
+* remove console logs and improve site avatar handling ([6e09839](https://github.com/blinko-space/blinko/commit/6e09839833e3f92458d664853ebc51dc73e5c3e0))
+
+# [0.36.0](https://github.com/blinko-space/blinko/compare/v0.35.9...v0.36.0) (2025-01-11)
+
+
+### Features
+
+* support hub follow unfollow website 🎉 ([18ffc3b](https://github.com/blinko-space/blinko/commit/18ffc3b641f00e089b97b9fad9a89eaed01cd8c5))
+
+## [0.35.9](https://github.com/blinko-space/blinko/compare/v0.35.8...v0.35.9) (2025-01-11)
+
+
+### Bug Fixes
+
+* update comment mutation to return a boolean ([3c7d7b9](https://github.com/blinko-space/blinko/commit/3c7d7b944b0b1c56054d5275ba5f2a6e9ae898ce))
+
 ## [0.35.8](https://github.com/blinko-space/blinko/compare/v0.35.7...v0.35.8) (2025-01-10)
 
 
