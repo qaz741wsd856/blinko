@@ -6,18 +6,19 @@ import { encode } from 'next-auth/jwt';
 import { Prisma } from '@prisma/client';
 import { accountsSchema } from '@/lib/prismaZodType';
 import { hashPassword, verifyPassword } from 'prisma/seed';
-import { generateTOTP, generateTOTPQRCode, verifyTOTP } from "./helper";
+import { generateTOTP, generateTOTPQRCode, getNextAuthSecret, verifyTOTP } from "./helper";
 import { deleteNotes } from './note';
 import { createSeed } from 'prisma/seedData';
 
 const genToken = async ({ id, name, role }: { id: number, name: string, role: string }) => {
+  const secret = await getNextAuthSecret();
   return await encode({
     token: {
       role,
       name,
       sub: id.toString(),
     },
-    secret: process.env.NEXTAUTH_SECRET!
+    secret
   })
 }
 
