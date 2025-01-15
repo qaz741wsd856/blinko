@@ -1,3 +1,24 @@
+## [0.36.9](https://github.com/blinko-space/blinko/compare/v0.36.8...v0.36.9) (2025-01-14)
+
+
+### Bug Fixes
+
+* support hub list ([47ab7d2](https://github.com/blinko-space/blinko/commit/47ab7d2f55bf373200188976a88b06dce0a3e540))
+
+## [0.36.8](https://github.com/blinko-space/blinko/compare/v0.36.7...v0.36.8) (2025-01-14)
+
+
+### Bug Fixes
+
+* update user token generation and context logging ([66e321f](https://github.com/blinko-space/blinko/commit/66e321fc3f4251f58843808fd66c0b648b8842c8))
+
+## [0.36.7](https://github.com/blinko-space/blinko/compare/v0.36.6...v0.36.7) (2025-01-14)
+
+
+### Bug Fixes
+
+* integrate webhook notifications for note updates and deletions ([9693530](https://github.com/blinko-space/blinko/commit/96935300b924cd445db7e48bb55a95e41a9da06e))
+
 ## [0.36.6](https://github.com/blinko-space/blinko/compare/v0.36.5...v0.36.6) (2025-01-12)
 
 
