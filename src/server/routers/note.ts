@@ -291,7 +291,8 @@ export const noteRouter = router({
     }))
     .output(z.object({
       hasPassword: z.boolean(),
-      data: z.union([z.null(), notesSchema.merge(
+      data: z.union([z.null(),
+      notesSchema.merge(
         z.object({
           attachments: z.array(attachmentsSchema),
           references: z.array(z.object({
@@ -320,7 +321,8 @@ export const noteRouter = router({
       const note = await prisma.notes.findFirst({
         where: {
           shareEncryptedUrl,
-          isShare: true
+          isShare: true,
+          isRecycle: false
         },
         include: {
           account: {
@@ -393,11 +395,41 @@ export const noteRouter = router({
     }))
     .output(z.union([z.null(), notesSchema.merge(
       z.object({
-        attachments: z.array(attachmentsSchema)
-      }))]))
+        attachments: z.array(attachmentsSchema),
+        tags: z.array(tagsToNoteSchema.merge(
+          z.object({
+            tag: tagSchema
+          }))
+        ),
+        references: z.array(z.object({
+          toNoteId: z.number(),
+          toNote: z.object({
+            content: z.string().optional(),
+            createdAt: z.date().optional(),
+            updatedAt: z.date().optional()
+          }).optional()
+        })).optional(),
+        referencedBy: z.array(z.object({ fromNoteId: z.number() })).optional(),
+        _count: z.object({
+          comments: z.number()
+        })
+      }))
+    ]))
     .mutation(async function ({ input, ctx }) {
       const { id } = input
-      return await prisma.notes.findFirst({ where: { id, accountId: Number(ctx.id) }, include: { tags: true, attachments: true }, })
+      return await prisma.notes.findFirst({
+        where: { id, accountId: Number(ctx.id) }, include: {
+          tags: {
+            include: {
+              tag: true
+            }
+          },
+          attachments: true,
+          references: true,
+          referencedBy: true,
+          _count: { select: { comments: true } }
+        },
+      })
     }),
   dailyReviewNoteList: authProcedure
     .meta({ openapi: { method: 'GET', path: '/v1/note/daily-review-list', summary: 'Query daily review note list', protect: true, tags: ['Note'] } })
@@ -409,7 +441,10 @@ export const noteRouter = router({
     ))
     .query(async function ({ ctx }) {
       return await prisma.notes.findMany({
-        where: { createdAt: { gt: new Date(new Date().getTime() - 24 * 60 * 60 * 1000) }, isReviewed: false, isArchived: false, accountId: Number(ctx.id) },
+        where: {
+          createdAt: { gt: new Date(new Date().getTime() - 24 * 60 * 60 * 1000) },
+          isReviewed: false, isArchived: false, isRecycle: false, accountId: Number(ctx.id)
+        },
         orderBy: { id: 'desc' },
         include: { attachments: true }
       })

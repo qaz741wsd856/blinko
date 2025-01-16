@@ -399,5 +399,17 @@
   "admin": "Web yöneticisi",
   "site-url": "Blinko Sitesi URL'si",
   "unfollow": "Takip etmeyi bırak",
-  "join-hub": "Merkeze Katıl"
+  "join-hub": "Merkeze Katıl",
+  "refresh": "Yenilemek",
+  "comment-notification": "Yorum Bildirimi",
+  "follow-notification": "Bildirimi Takip Et",
+  "followed-you": "seni takip etti",
+  "mark-all-as-read": "Tümünü okundu olarak işaretle",
+  "no-notification": "Bildirim yok",
+  "new-notification": "Yeni Bildirim",
+  "notification": "Bildirim",
+  "backup-success": "Yedekleme Başarılı🎉",
+  "system-notification": "Sistem Bildirimi",
+  "embedding-api-endpoint": "API Nokta Sonlandırıcı gömme",
+  "embedding-api-key": "API Anahtarını Gömülü Olarak Kullanma"
 }

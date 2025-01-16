@@ -1,3 +1,57 @@
+## [0.37.3](https://github.com/blinko-space/blinko/compare/v0.37.2...v0.37.3) (2025-01-15)
+
+
+### Bug Fixes
+
+* update API endpoint placeholders in AiSetting component ([7920499](https://github.com/blinko-space/blinko/commit/7920499334d1d4b5926100bf4425cd6877067b0a))
+
+## [0.37.2](https://github.com/blinko-space/blinko/compare/v0.37.1...v0.37.2) (2025-01-15)
+
+
+### Bug Fixes
+
+* update notification styles and GitHub markdown background ([3884b6c](https://github.com/blinko-space/blinko/commit/3884b6c1b6b8e7e715cb30f19c1e873ded782f7a))
+
+## [0.37.1](https://github.com/blinko-space/blinko/compare/v0.37.0...v0.37.1) (2025-01-15)
+
+
+### Bug Fixes
+
+* add embedding API configuration and update translations ([6ef0f89](https://github.com/blinko-space/blinko/commit/6ef0f89c9762084bab1859ff0e88a17bb4d87630))
+
+# [0.37.0](https://github.com/blinko-space/blinko/compare/v0.36.12...v0.37.0) (2025-01-15)
+
+
+### Bug Fixes
+
+* add offline fallback functionality ([4080e52](https://github.com/blinko-space/blinko/commit/4080e52ce27807429f2bd5054edcabb148401f3e))
+
+
+### Features
+
+* add notifications feature and update translations ([e1ad253](https://github.com/blinko-space/blinko/commit/e1ad2539c3bf96ff839d5d55699282285e88f789))
+
+## [0.36.12](https://github.com/blinko-space/blinko/compare/v0.36.11...v0.36.12) (2025-01-15)
+
+
+### Bug Fixes
+
+* update note query to exclude recycled notes ([b256949](https://github.com/blinko-space/blinko/commit/b256949a1dd05877639a3c9d75302da6373711e2))
+
+## [0.36.11](https://github.com/blinko-space/blinko/compare/v0.36.10...v0.36.11) (2025-01-15)
+
+
+### Bug Fixes
+
+* add 'refresh' functionality and update translations ([a136a18](https://github.com/blinko-space/blinko/commit/a136a189424eb0cd746bb10251cf82ca90fada3e))
+
+## [0.36.10](https://github.com/blinko-space/blinko/compare/v0.36.9...v0.36.10) (2025-01-15)
+
+
+### Bug Fixes
+
+* update note query to exclude recycled notes ([e0bba4c](https://github.com/blinko-space/blinko/commit/e0bba4c6def3091a8ffb301f3c2a63d896ee0095))
+
 ## [0.36.9](https://github.com/blinko-space/blinko/compare/v0.36.8...v0.36.9) (2025-01-14)
 
 

@@ -476,5 +476,17 @@
   "admin": "站长",
   "site-url": "Blinko 站点网址",
   "unfollow": "取消关注",
-  "join-hub": "加入 Hub"
+  "join-hub": "加入 Hub",
+  "refresh": "刷新",
+  "comment-notification": "评论通知",
+  "follow-notification": "跟随通知",
+  "followed-you": "关注了你",
+  "mark-all-as-read": "将所有标记为已读",
+  "no-notification": "没有通知",
+  "new-notification": "新通知",
+  "notification": "通知",
+  "backup-success": "备份成功🎉",
+  "system-notification": "系统通知",
+  "embedding-api-endpoint": "嵌入式API端点",
+  "embedding-api-key": "嵌入式 API 密钥"
 }

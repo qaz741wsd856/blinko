@@ -486,5 +486,17 @@
   "admin": "網站管理員",
   "site-url": "Blinko 網站網址",
   "unfollow": "取消關注",
-  "join-hub": "加入 Hub"
+  "join-hub": "加入 Hub",
+  "refresh": "更新",
+  "comment-notification": "評論通知",
+  "follow-notification": "跟隨通知",
+  "followed-you": "跟隨了你",
+  "mark-all-as-read": "將全部標記為已讀",
+  "no-notification": "沒有通知",
+  "new-notification": "新通知",
+  "notification": "通知",
+  "backup-success": "備份成功🎉",
+  "system-notification": "系統通知",
+  "embedding-api-endpoint": "嵌入 API 端點",
+  "embedding-api-key": "嵌入式 API 金鑰"
 }

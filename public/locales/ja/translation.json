@@ -430,5 +430,17 @@
   "admin": "ウェブマスター",
   "site-url": "BlinkoサイトのURL",
   "unfollow": "フォローを外す",
-  "join-hub": "ハブに参加"
+  "join-hub": "ハブに参加",
+  "refresh": "リフレッシュ",
+  "comment-notification": "コメント通知",
+  "follow-notification": "通知をフォロー",
+  "followed-you": "あなたに従いました",
+  "mark-all-as-read": "すべてを読み終わったとマークします",
+  "no-notification": "通知なし",
+  "new-notification": "新しい通知",
+  "notification": "通知",
+  "backup-success": "バックアップ成功🎉",
+  "system-notification": "システム通知",
+  "embedding-api-endpoint": "APIエンドポイントの埋め込み",
+  "embedding-api-key": "APIキーの埋め込み"
 }
