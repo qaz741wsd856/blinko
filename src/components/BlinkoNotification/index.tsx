@@ -10,14 +10,14 @@ import { PromisePageState, PromiseState } from '@/store/standard/PromiseState';
 import { ScrollArea } from '../Common/ScrollArea';
 import { Notifications, NotificationType } from '@/lib/prismaZodType';
 import { ShowCommentDialog } from '../BlinkoCard/commentButton';
+import { BlinkoStore } from '@/store/blinkoStore';
 
 export const BlinkoNotification = observer(() => {
   const { t } = useTranslation();
-
+  const blinko = RootStore.Get(BlinkoStore)
   const store = RootStore.Local(() => ({
     isOpen: false,
     setIsOpen(open: boolean) {
-      console.log('open', open);
       this.isOpen = open;
       if (open) {
         this.notificationList.resetAndCall({});
@@ -45,7 +45,6 @@ export const BlinkoNotification = observer(() => {
       this.markAsRead.call({ all: true });
     },
     handleMarkAsRead(notification: Notifications) {
-      console.log('notification', notification, NotificationType.COMMENT);
       if (notification.type === NotificationType.COMMENT) {
         ShowCommentDialog(notification.metadata.noteId);
       }
@@ -57,6 +56,11 @@ export const BlinkoNotification = observer(() => {
     store.unreadCount.call();
     store.notificationList.resetAndCall({});
   }, []);
+
+  useEffect(() => {
+    store.unreadCount.call();
+    store.notificationList.resetAndCall({});
+  }, [blinko.updateTicker]);
 
   if (store.unreadCount.value === 0) {
     return null

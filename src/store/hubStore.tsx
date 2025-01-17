@@ -3,32 +3,42 @@ import axios from "axios";
 import { Store } from "./standard/base";
 import { StorageState } from "./standard/StorageState";
 import { PromisePageState, PromiseState } from "./standard/PromiseState";
+import { BlinkoStore } from "./blinkoStore";
+import { RootStore } from ".";
 
 export class HubStore implements Store {
   sid = 'hubStore'
   autoObservable = true
   currentSiteUserId = null
   currentSiteURL = ''
+  currentListType: 'home' | 'recommand' | 'site' = 'home'
 
   forceBlog = new StorageState({ key: 'forceBlog', default: true, value: true })
 
   shareNoteList = new PromisePageState({
     function: async ({ page, size }) => {
-      if (this.currentSiteURL) {
-        const res = await axios.post(this.currentSiteURL + '/api/v1/note/public-list', { page, size })
-        return res.data.map(i => {
-          i.account.image = this.currentSiteURL + i.account.image
-          i.attachments = i.attachments.map(j => {
-            j.path = this.currentSiteURL + j.path
-            return j
+      const searchText = RootStore.Get(BlinkoStore).noteListFilterConfig.searchText
+      if (this.currentListType == 'home') {
+        const notes = await api.notes.publicList.mutate({ page, size, searchText })
+        return notes
+      } else if (this.currentListType == 'recommand') {
+        const recommandList = await api.follows.recommandList.query({ searchText })
+        return recommandList
+      } else if (this.currentListType == 'site') {
+        if (this.currentSiteURL) {
+          const res = await axios.post(this.currentSiteURL + '/api/v1/note/public-list', { page, size, searchText })
+          return res.data.map(i => {
+            i.attachments = i.attachments.map(j => {
+              j.path = this.currentSiteURL + j.path
+              return j
+            })
+            return {
+              ...i,
+              originURL: this.currentSiteURL
+            }
           })
-          return {
-            ...i
-          }
-        })
+        }
       }
-      const notes = await api.notes.publicList.mutate({ page, size })
-      return notes
     }
   })
   siteInfo = new PromiseState({
