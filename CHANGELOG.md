@@ -1,3 +1,17 @@
+## [0.37.7](https://github.com/blinko-space/blinko/compare/v0.37.6...v0.37.7) (2025-01-19)
+
+
+### Bug Fixes
+
+* add 'has-todo' translation key across multiple languages and integrate into filter functionality ([069bb14](https://github.com/blinko-space/blinko/commit/069bb1461ac6ec18d244635cff3e26075d4ad24d))
+
+## [0.37.6](https://github.com/blinko-space/blinko/compare/v0.37.5...v0.37.6) (2025-01-19)
+
+
+### Bug Fixes
+
+* update markdown insertion and replacement methods in EditorStore [#463](https://github.com/blinko-space/blinko/issues/463) ([01213fc](https://github.com/blinko-space/blinko/commit/01213fc1b247211067367bebf0ae4377468d541d))
+
 ## [0.37.5](https://github.com/blinko-space/blinko/compare/v0.37.4...v0.37.5) (2025-01-16)
 
 
