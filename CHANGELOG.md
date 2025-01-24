@@ -1,3 +1,17 @@
+## [0.37.16](https://github.com/blinko-space/blinko/compare/v0.37.15...v0.37.16) (2025-01-23)
+
+
+### Bug Fixes
+
+* add onClose functionality to ExpandableContainer ([0a8d048](https://github.com/blinko-space/blinko/commit/0a8d048891f83b173b653adf45cd95f6bcaf31b7))
+
+## [0.37.15](https://github.com/blinko-space/blinko/compare/v0.37.14...v0.37.15) (2025-01-23)
+
+
+### Bug Fixes
+
+* enhance task management and file handling ([1290b7f](https://github.com/blinko-space/blinko/commit/1290b7f8891fefef5493b6a6272fcc4e665445be))
+
 ## [0.37.14](https://github.com/blinko-space/blinko/compare/v0.37.13...v0.37.14) (2025-01-22)
 
 
