@@ -1,3 +1,38 @@
+## [0.37.21](https://github.com/blinko-space/blinko/compare/v0.37.20...v0.37.21) (2025-01-27)
+
+
+### Bug Fixes
+
+* Update search text reference in share note list retrieval ([95cd577](https://github.com/blinko-space/blinko/commit/95cd577ccdff0caf4f0282f7a9c019accd0ddde2))
+
+## [0.37.20](https://github.com/blinko-space/blinko/compare/v0.37.19...v0.37.20) (2025-01-27)
+
+
+### Bug Fixes
+
+* remove right click menu on share mode card [#432](https://github.com/blinko-space/blinko/issues/432) ([8ee0a9d](https://github.com/blinko-space/blinko/commit/8ee0a9de77c23c93b1fe2b9cb3478acfb3b94b52))
+
+## [0.37.19](https://github.com/blinko-space/blinko/compare/v0.37.18...v0.37.19) (2025-01-27)
+
+
+### Bug Fixes
+
+* Add notification hiding and search settings functionality ([279eb97](https://github.com/blinko-space/blinko/commit/279eb9709c363e718278d6592e1bc2200476805e))
+
+## [0.37.18](https://github.com/blinko-space/blinko/compare/v0.37.17...v0.37.18) (2025-01-27)
+
+
+### Bug Fixes
+
+* Login screen animated wallpaper not disabled [#468](https://github.com/blinko-space/blinko/issues/468) ([b608985](https://github.com/blinko-space/blinko/commit/b608985f827113c3cb9a1f4898134e93373430bd))
+
+## [0.37.17](https://github.com/blinko-space/blinko/compare/v0.37.16...v0.37.17) (2025-01-27)
+
+
+### Bug Fixes
+
+* /v1/user/detail returns information about the current user. [#470](https://github.com/blinko-space/blinko/issues/470) ([613a2ce](https://github.com/blinko-space/blinko/commit/613a2ce92345fb5045757897f768d485165bdfb3))
+
 ## [0.37.16](https://github.com/blinko-space/blinko/compare/v0.37.15...v0.37.16) (2025-01-23)
 
 
