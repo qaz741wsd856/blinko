@@ -1,4 +1,3 @@
-import { helper } from "@/lib/helper";
 import { useIsIOS } from "@/lib/hooks";
 import { motion } from "motion/react";
 import { useEffect } from "react";
@@ -26,7 +25,6 @@ export const ExpandableContainer = ({ isExpanded, children, onClose }: Expandabl
   
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      console.log('isExpanded', e.key,isExpanded)
       if (e.key === 'Escape' && isExpanded) {
         onClose?.();
       }

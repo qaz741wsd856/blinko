@@ -26,7 +26,6 @@ export class BaseStore implements Store {
       href: '/?path=notes',
       icon: 'hugeicons:note'
     },
-
     {
       title: "analytics",
       href: '/analytics',
@@ -36,12 +35,14 @@ export class BaseStore implements Store {
     {
       title: "resources",
       href: '/resources',
-      icon: 'solar:database-linear'
+      icon: 'solar:database-linear',
+      hiddenMobile: true,
     },
     {
       title: "archived",
       href: '/?path=archived',
-      icon: 'solar:box-broken'
+      icon: 'solar:box-broken',
+      hiddenMobile: true,
     },
     {
       title: "trash",
@@ -146,7 +147,7 @@ export class BaseStore implements Store {
 
   sidebarWidth = new StorageState<number>({
     key: 'sidebar-width',
-    default: 288,
+    default: 220,
     validate: (value: number) => {
       if (value < 220) return 220;
       if (value > 400) return 400;

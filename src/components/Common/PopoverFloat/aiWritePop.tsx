@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { observer } from 'mobx-react-lite';
-import { Card, Input, Button } from '@nextui-org/react';
+import { Card, Input, Button } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { eventBus } from '@/lib/event';
 import PopoverFloat from '.';
@@ -131,7 +131,7 @@ const AiWritePop = observer(() => {
                 store.hidden()
               }} startContent={<Icon icon="ic:sharp-close" className='red' />} size='sm' variant='light' color='danger'>{t('reject')}</Button>
               <Button onPress={() => {
-                ai.abort();
+                ai.abortAiWrite();
               }} startContent={<Icon icon="mynaui:stop" className='blinko' />} size='sm' variant='light' color='warning'>{t('stop')} </Button>
             </div>
           )}
