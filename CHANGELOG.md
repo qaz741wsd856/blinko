@@ -1,3 +1,31 @@
+## [0.41.8](https://github.com/blinko-space/blinko/compare/v0.41.7...v0.41.8) (2025-02-24)
+
+
+### Bug Fixes
+
+* ai style ([c9a4662](https://github.com/blinko-space/blinko/commit/c9a4662d7be557d73a47cc6fc0be83fbf5892891))
+
+## [0.41.7](https://github.com/blinko-space/blinko/compare/v0.41.6...v0.41.7) (2025-02-24)
+
+
+### Bug Fixes
+
+* upgrade Next.js and dependencies to latest versions ([0274e85](https://github.com/blinko-space/blinko/commit/0274e8565dc2ae83a3e25611383ef7bdd1688d82))
+
+## [0.41.6](https://github.com/blinko-space/blinko/compare/v0.41.5...v0.41.6) (2025-02-24)
+
+
+### Bug Fixes
+
+* @mastra/rag@0.1.3 use canvas ([25c7f1f](https://github.com/blinko-space/blinko/commit/25c7f1f68f3abc1e42eeda70e643a84de08d9448))
+
+## [0.41.5](https://github.com/blinko-space/blinko/compare/v0.41.4...v0.41.5) (2025-02-24)
+
+
+### Bug Fixes
+
+* build ([17cc5b4](https://github.com/blinko-space/blinko/commit/17cc5b457db3276eb95791aeec3b9bc7d3f64bb9))
+
 ## [0.41.4](https://github.com/blinko-space/blinko/compare/v0.41.3...v0.41.4) (2025-02-23)
 
 
