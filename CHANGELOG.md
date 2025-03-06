@@ -1,3 +1,17 @@
+## [0.42.2](https://github.com/blinko-space/blinko/compare/v0.42.1...v0.42.2) (2025-03-05)
+
+
+### Bug Fixes
+
+* ui improve & ai prompt improve ([15c8d74](https://github.com/blinko-space/blinko/commit/15c8d74fdb656c9ddbdf9bb97b4f31ccf470b2b4))
+
+## [0.42.1](https://github.com/blinko-space/blinko/compare/v0.42.0...v0.42.1) (2025-03-05)
+
+
+### Bug Fixes
+
+* support isHideBlogImages ([5c33e64](https://github.com/blinko-space/blinko/commit/5c33e64db7b772ce0d17ce3887b1b156c8a76780))
+
 # [0.42.0](https://github.com/blinko-space/blinko/compare/v0.41.13...v0.42.0) (2025-03-02)
 
 
