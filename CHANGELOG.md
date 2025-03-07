@@ -1,3 +1,19 @@
+## [0.42.4](https://github.com/blinko-space/blinko/compare/v0.42.3...v0.42.4) (2025-03-06)
+
+
+### Bug Fixes
+
+* rag ai enhance ([2fa83c7](https://github.com/blinko-space/blinko/commit/2fa83c78354bc3ea0a9a88cb038bad5cdfbedaa4))
+
+## [0.42.3](https://github.com/blinko-space/blinko/compare/v0.42.2...v0.42.3) (2025-03-06)
+
+
+### Bug Fixes
+
+* C++ tag regExp issue ([#526](https://github.com/blinko-space/blinko/issues/526)) ([cf493ec](https://github.com/blinko-space/blinko/commit/cf493ec7b896497e7bd1148a155f94c6c40c08ab))
+* improve ai ([8c557d8](https://github.com/blinko-space/blinko/commit/8c557d80b5a540cb0b0c3e234a348f29441f90ad))
+* support openRouter provider ([#522](https://github.com/blinko-space/blinko/issues/522)) ([0cf07d4](https://github.com/blinko-space/blinko/commit/0cf07d4988d071689be1dc59838f53cf93f8c536))
+
 ## [0.42.2](https://github.com/blinko-space/blinko/compare/v0.42.1...v0.42.2) (2025-03-05)
 
 
