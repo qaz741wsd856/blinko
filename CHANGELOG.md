@@ -1,3 +1,18 @@
+## [0.43.7](https://github.com/blinko-space/blinko/compare/v0.43.6...v0.43.7) (2025-03-11)
+
+
+### Bug Fixes
+
+* **translations:** Update french translation ([06d3550](https://github.com/blinko-space/blinko/commit/06d3550bd70588d4be4d2f83847a817c64cfaac8))
+
+## [0.43.6](https://github.com/blinko-space/blinko/compare/v0.43.5...v0.43.6) (2025-03-11)
+
+
+### Bug Fixes
+
+* build ([285d9d5](https://github.com/blinko-space/blinko/commit/285d9d57f885e2a39c7823aa540cbfcb8a2b03fc))
+* Railway requires to listen on 0.0.0.0 ([ec14861](https://github.com/blinko-space/blinko/commit/ec14861369dfa665ec5c3596f469669e0cca94f0))
+
 ## [0.43.5](https://github.com/blinko-space/blinko/compare/v0.43.4...v0.43.5) (2025-03-10)
 
 
