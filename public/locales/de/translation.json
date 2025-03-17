@@ -534,5 +534,11 @@
   "restore-this-version": "Stellen Sie diese Version wieder her",
   "Note History": "Beachten Sie die Geschichte",
   "View History Versions": "Verlauf anzeigen",
-  "history-note-only": "ACHTUNG: Dieser Verlauf enthält nur Textinhalte, nicht Dateiverlauf"
+  "history-note-only": "ACHTUNG: Dieser Verlauf enthält nur Textinhalte, nicht Dateiverlauf",
+  "referenceResource": "Referenzressource",
+  "to-ask-ai": "Ai zu fragen",
+  "press-enter-to-select-first-result": "Drücken Sie die Eingabetaste, um das erste Ergebnis auszuwählen",
+  "ask-ai": "Fragen Sie Ai",
+  "ask-blinko-ai-about-this-query": "Fragen Sie Blinko AI nach dieser Frage",
+  "search-or-ask-ai": "Suchen Sie Note, Einstellungen oder fragen Sie AI ..."
 }
