@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import { Textarea } from '@heroui/react';
-import { Icon } from '@iconify/react';
+import { Icon } from '@/components/Common/Iconify/icons';
 import { IconButton } from '../Common/Editor/Toolbar/IconButton';
 import { motion } from 'framer-motion';
 import { useMediaQuery } from 'usehooks-ts';
@@ -74,7 +74,7 @@ const cardIcons = [
   },
   {
     tooltip: <div className="w-[200px]">{i18n.t('add-tools-to-model')}</div>,
-    icon: 'pajamas:issue-type-enhancement',
+    icon: 'hugeicons:ai-chemistry-02',
     size: 20,
     containerSize: 30,
     onClick: () => {

@@ -15,6 +15,7 @@ export enum NoteType {
   'BLINKO',
   'NOTE'
 }
+export type PublicUser = NonNullable<RouterOutput['users']['publicUserList']>[0]
 export function toNoteTypeEnum(v?: number, fallback: NoteType = NoteType.BLINKO): NoteType {
   switch (v) {
     case 0:
@@ -83,13 +84,18 @@ export const ZConfigKey = z.union([
   z.literal('tavilyApiKey'),
   z.literal('tavilyMaxResult'),
   z.literal('isUseAiPostProcessing'),
-  z.literal('aiPostProcessingPrompt'),
+  z.literal('aiCommentPrompt'),
   z.literal('aiPostProcessingMode'),
   z.literal('isUseHttpProxy'),
   z.literal('httpProxyHost'),
   z.literal('httpProxyPort'),
   z.literal('httpProxyUsername'),
   z.literal('httpProxyPassword'),
+  z.literal('aiSmartEditPrompt'),
+  z.literal('rerankModel'),
+  z.literal('rerankTopK'),
+  z.literal('rerankScore'),
+  z.literal('rerankUseEembbingEndpoint'),
   ZUserPerferConfigKey,
   z.any()
 ]);
@@ -163,13 +169,18 @@ export const ZConfigSchema = z.object({
   tavilyMaxResult: z.any().optional(),
   isHideBlogImages: z.boolean().optional(),
   isUseAiPostProcessing: z.boolean().optional(),
-  aiPostProcessingPrompt: z.string().optional(),
+  aiCommentPrompt: z.string().optional(),
   aiPostProcessingMode: z.string().optional(),
   isUseHttpProxy: z.boolean().optional(),
   httpProxyHost: z.string().optional(),
   httpProxyPort: z.number().optional(),
   httpProxyUsername: z.string().optional(),
-  httpProxyPassword: z.string().optional()
+  httpProxyPassword: z.string().optional(),
+  aiSmartEditPrompt: z.string().optional(),
+  rerankModel: z.string().optional(),
+  rerankTopK: z.number().optional(),
+  rerankScore: z.number().optional(),
+  rerankUseEembbingEndpoint: z.boolean().optional(),
 });
 
 export type GlobalConfig = z.infer<typeof ZConfigSchema>;

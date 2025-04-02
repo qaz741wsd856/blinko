@@ -1,10 +1,9 @@
 import { observer } from "mobx-react-lite";
 import { BlinkoStore } from '@/store/blinkoStore';
-import { Divider, Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button, DatePicker } from '@heroui/react';
-import { _ } from '@/lib/lodash';
+import { Dropdown, DropdownTrigger, DropdownMenu, DropdownItem, Button, DatePicker } from '@heroui/react';
 import { useTranslation } from 'react-i18next';
 import { ContextMenu, ContextMenuItem } from '@/components/Common/ContextMenu';
-import { Icon } from '@iconify/react';
+import { Icon } from '@/components/Common/Iconify/icons';
 import { PromiseCall } from '@/store/standard/PromiseState';
 import { api } from '@/lib/trpc';
 import { RootStore } from "@/store";
@@ -20,6 +19,9 @@ import i18n from "@/lib/i18n";
 import { BlinkoShareDialog } from "../BlinkoShareDialog";
 import { BaseStore } from "@/store/baseStore";
 import { PluginApiStore } from "@/store/plugin/pluginApiStore";
+import { ToastPlugin } from "@/store/module/Toast/Toast";
+import { Note } from "@/server/types";
+import { BlinkoCard } from "../BlinkoCard";
 
 export const ShowEditTimeModel = () => {
   const blinko = RootStore.Get(BlinkoStore)
@@ -172,6 +174,44 @@ const handleDelete = async () => {
   api.ai.embeddingDelete.mutate({ id: blinko.curSelectedNote?.id! })
 }
 
+const handleRelatedNotes = async () => {
+  const blinko = RootStore.Get(BlinkoStore);
+  const dialog = RootStore.Get(DialogStore);
+  const toast = RootStore.Get(ToastPlugin);
+
+  try {
+    const noteId = blinko.curSelectedNote?.id;
+    if (!noteId) return;
+    toast.loading(i18n.t('loading'));
+    const relatedNotes = await api.notes.relatedNotes.query({ id: noteId });
+    toast.dismiss();
+    if (relatedNotes.length === 0) {
+      toast.error(i18n.t('no-related-notes-found'));
+      return;
+    }
+
+    dialog.setData({
+      size: 'lg' as any,
+      isOpen: true,
+      title: i18n.t('related-notes'),
+      isDismissable: true,
+      content: () => {
+        return (
+          <div className="flex flex-col gap-2 max-h-[70vh] overflow-y-auto">
+            {relatedNotes.map((note: Note) => (
+              <BlinkoCard key={note.id} blinkoItem={note} withoutHoverAnimation/>
+            ))}
+          </div>
+        );
+      }
+    });
+  } catch (error) {
+    toast.dismiss();
+    toast.error(i18n.t('operation-failed'));
+    console.error("Failed to fetch related notes:", error);
+  }
+};
+
 export const EditItem = observer(() => {
   const { t } = useTranslation();
   return <div className="flex items-start gap-2">
@@ -243,6 +283,16 @@ export const AITagItem = observer(() => {
   );
 });
 
+export const RelatedNotesItem = observer(() => {
+  const { t } = useTranslation();
+  return (
+    <div className="flex items-start gap-2">
+      <Icon icon="mdi:note-search-outline" width="20" height="20" />
+      <div>{t('related-notes')}</div>
+    </div>
+  );
+});
+
 export const TrashItem = observer(() => {
   const { t } = useTranslation();
   return <div className="flex items-start gap-2 text-red-500">
@@ -298,17 +348,25 @@ export const BlinkoRightClickMenu = observer(() => {
       <TopItem />
     </ContextMenuItem>
 
-    <ContextMenuItem onClick={handlePublic}>
-      <PublicItem />
-    </ContextMenuItem>
-
     <ContextMenuItem onClick={handleArchived}>
       <ArchivedItem />
     </ContextMenuItem>
 
+    {!blinko.curSelectedNote?.isRecycle ? (
+      <ContextMenuItem onClick={handlePublic}>
+      <PublicItem />
+    </ContextMenuItem>
+    ) : <></>}
+
     {blinko.config.value?.isUseAI ? (
       <ContextMenuItem onClick={handleAITag}>
         <AITagItem />
+      </ContextMenuItem>
+    ) : <></>}
+
+    {blinko.config.value?.isUseAI ? (
+      <ContextMenuItem onClick={handleRelatedNotes}>
+        <RelatedNotesItem />
       </ContextMenuItem>
     ) : <></>}
 
@@ -349,7 +407,9 @@ export const LeftCickMenu = observer(({ onTrigger, className }: { onTrigger: () 
 
   return <Dropdown onOpenChange={e => onTrigger()}>
     <DropdownTrigger >
-      <Icon onClick={onTrigger} className={`${className} text-desc hover:text-primary cursor-pointer hover:scale-1.3 transition-all`} icon="fluent:more-vertical-16-regular" width="16" height="16" />
+      <div onClick={onTrigger} className={`${className} text-desc hover:text-primary cursor-pointer hover:scale-1.3 transition-all`}>
+        <Icon icon="fluent:more-vertical-16-regular" width="16" height="16" />
+      </div>
     </DropdownTrigger>
     <DropdownMenu aria-label="Static Actions" disabledKeys={disabledKeys}>
       <DropdownItem key="EditItem" onPress={() => handleEdit(isDetailPage)}><EditItem /></DropdownItem>
@@ -359,14 +419,25 @@ export const LeftCickMenu = observer(({ onTrigger, className }: { onTrigger: () 
       <DropdownItem key="EditTimeItem" onPress={() => ShowEditTimeModel()}> <EditTimeItem /></DropdownItem>
       <DropdownItem key="ConvertItem" onPress={ConvertItemFunction}> <ConvertItem /></DropdownItem>
       <DropdownItem key="TopItem" onPress={handleTop}> <TopItem />  </DropdownItem>
-      <DropdownItem key="ShareItem" onPress={handlePublic}> <PublicItem />  </DropdownItem>
       <DropdownItem key="ArchivedItem" onPress={handleArchived}>
         <ArchivedItem />
       </DropdownItem>
 
+      {!blinko.curSelectedNote?.isRecycle ? (
+        <DropdownItem key="ShareItem" onPress={handlePublic}> 
+          <PublicItem />  
+        </DropdownItem>
+      ) : <></>}
+
       {blinko.config.value?.isUseAI ? (
         <DropdownItem key="AITagItem" onPress={handleAITag}>
           <AITagItem />
+        </DropdownItem>
+      ) : <></>}
+
+      {blinko.config.value?.isUseAI ? (
+        <DropdownItem key="RelatedNotesItem" onPress={handleRelatedNotes}>
+          <RelatedNotesItem />
         </DropdownItem>
       ) : <></>}
 

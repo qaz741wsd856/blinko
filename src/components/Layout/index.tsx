@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Badge } from '@heroui/react';
-import { Icon } from '@iconify/react';
+import { Icon } from '@/components/Common/Iconify/icons';
 import { UserStore } from '@/store/user';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { observer } from 'mobx-react-lite';
 import { RootStore } from '@/store';
 import { BlinkoStore } from '@/store/blinkoStore';
-import { useTheme } from 'next-themes';
 import { useTranslation } from 'react-i18next';
 import { BaseStore } from '@/store/baseStore';
 import { ScrollArea } from '../Common/ScrollArea';
@@ -26,7 +25,6 @@ import { ToastPlugin } from '@/store/module/Toast/Toast';
 import { BarSearchInput } from './BarSearchInput';
 import { BlinkoNotification } from '@/components/BlinkoNotification';
 import { AiStore } from '@/store/aiStore';
-import { GlobalSearch } from './GlobalSearch';
 
 export const SideBarItem = 'p-2 flex flex-row items-center cursor-pointer gap-2 hover:bg-hover rounded-xl transition-all';
 
@@ -72,7 +70,7 @@ export const CommonLayout = observer(({ children, header }: { children?: React.R
   return (
     <div className="flex w-full h-mobile-full overflow-x-hidden" id="outer-container">
       <AiWritePop />
-    
+
       <Menu disableAutoFocus onClose={() => setisOpen(false)} onOpen={setisOpen} isOpen={isOpen} pageWrapId={'page-wrap'} outerContainerId={'outer-container'}>
         <Sidebar onItemClick={() => setisOpen(false)} />
       </Menu>
@@ -153,25 +151,19 @@ export const CommonLayout = observer(({ children, header }: { children?: React.R
               <div className="flex items-center justify-center gap-2 md:gap-4 w-auto ">
                 <BarSearchInput isPc={isPc} />
                 <FilterPop />
-                {blinkoStore.dailyReviewNoteList.value?.length != 0 && !blinkoStore.config.value?.isCloseDailyReview && (
-                  <Badge size="sm" className="shrink-0" content={blinkoStore.dailyReviewNoteList.value?.length} color="warning">
-                    <Link href="/review" passHref legacyBehavior>
-                      <Button
-                        as="a"
-                        className="mt-[2px]"
-                        isIconOnly
-                        size="sm"
-                        variant="light"
-                        onPress={(e) => {
-                          router.push('/review');
-                        }}
-                      >
-                        <Icon className="cursor-pointer" icon="mingcute:message-1-line" width="24" height="24" />
-                      </Button>
-                    </Link>
-                  </Badge>
-                )}
-
+                <Badge size="sm" className="shrink-0" content={blinkoStore.dailyReviewNoteList.value?.length} color="warning">
+                  <Link href="/review" passHref legacyBehavior>
+                    <Button
+                      as="a"
+                      className="mt-[2px]"
+                      isIconOnly
+                      size="sm"
+                      variant="light"
+                    >
+                      <Icon className="cursor-pointer" icon="tabler:bulb" width="24" height="24" />
+                    </Button>
+                  </Link>
+                </Badge>
                 <BlinkoNotification />
               </div>
             </div>
@@ -180,7 +172,7 @@ export const CommonLayout = observer(({ children, header }: { children?: React.R
         </header>
         {/* backdrop  pt-6 -mt-6 to fix the editor tooltip position */}
 
-        <ScrollArea onBottom={() => {}} className="h-[calc(100%_-_70px)] !overflow-y-auto overflow-x-hidden mt-[-4px]">
+        <ScrollArea onBottom={() => { }} className="h-[calc(100%_-_70px)] !overflow-y-auto overflow-x-hidden mt-[-4px]">
           <div className="relative flex h-full w-full flex-col rounded-medium layout-container">
             <div className="hidden md:block absolute top-[-37%] right-[5%] z-[0] h-[350px] w-[350px] overflow-hidden blur-3xl ">
               <div className="w-full h-[356px] bg-[#9936e6] opacity-20" style={{ clipPath: 'circle(50% at 50% 50%)' }} />

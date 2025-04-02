@@ -5,8 +5,14 @@ docker-compose -f docker-compose.prod.yml up -d
 
 ## build docker with dockerfile locally
 ```
-docker build -t blinko .
-docker run --name blinko-website -d -p 1111:1111 blinko
+docker build --build-arg USE_MIRROR=true -t blinko .
+docker run --name blinko-website -d -p 1111:1111 -e "DATABASE_URL=postgresql://postgres:mysecretpassword@192.168.31.200:5438/postgres"  -v "C:\Users\koray\Desktop\testblinko:/app/.blinko" blinkospace/blinko:latest
+``` 
+
+## test mutli platform build
+```
+docker buildx build --platform linux/amd64,linux/arm64 -t test/myimage:test  --output "type=image,push=false" .
+docker buildx build --platform linux/arm64 -t test/myimage:test  --output "type=image,push=false" .
 ```
 
 ## build docker image & run with docker-compose locally

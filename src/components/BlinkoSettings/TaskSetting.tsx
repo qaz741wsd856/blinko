@@ -1,11 +1,23 @@
 import { observer } from "mobx-react-lite";
-import { Button, Card, Input, Select, SelectItem, Switch, Table, TableBody, TableCell, TableColumn, TableHeader, TableRow, Progress } from "@heroui/react";
+import {
+  Input,
+  Select,
+  SelectItem,
+  Switch,
+  Table,
+  TableBody,
+  TableCell,
+  TableColumn,
+  TableHeader,
+  TableRow,
+  Progress,
+} from "@heroui/react";
 import { RootStore } from "@/store";
 import { BlinkoStore } from "@/store/blinkoStore";
 import { PromiseCall } from "@/store/standard/PromiseState";
 import { helper } from "@/lib/helper";
 import dayjs from "@/lib/dayjs";
-import { Icon } from "@iconify/react";
+import { Icon } from '@/components/Common/Iconify/icons';
 import { api } from "@/lib/trpc";
 import { Item } from "./Item";
 import { useTranslation } from "react-i18next";
@@ -104,7 +116,7 @@ const TasksPanel = observer(() => {
     </TableHeader>
     <TableBody>
       {
-        blinko.task.value!.map(i => {
+        blinko.task.value!.filter(i => i.name != 'rebuildEmbedding').map(i => {
           const progress = i.output?.progress;
           return <TableRow>
             <TableCell>{i.name}</TableCell>

@@ -134,7 +134,7 @@ export class BlinkoStore implements Store {
   }
 
   private removeOfflineNote(id: number) {
-    const index = this.offlineNoteStorage.list.findIndex(note => note.id === id);
+    const index = this.offlineNoteStorage.list?.findIndex(note => note.id === id);
     if (index !== -1) {
       this.offlineNoteStorage.remove(index);
     }
@@ -216,6 +216,21 @@ export class BlinkoStore implements Store {
     }
   })
 
+  internalShareNote = new PromiseState({
+    function: async (params: { id: number, accountIds: number[], isCancel: boolean }) => {
+      const res = await api.notes.internalShareNote.mutate(params)
+      RootStore.Get(ToastPlugin).success(i18n.t("operation-success"))
+      this.updateTicker++
+      return res
+    }
+  })
+
+  getInternalSharedUsers = new PromiseState({
+    function: async (id: number) => {
+      return await api.notes.getInternalSharedUsers.mutate({ id })
+    }
+  })
+
   async syncOfflineNotes() {
     if (!this.isOnline) return;
 
@@ -289,6 +304,12 @@ export class BlinkoStore implements Store {
     }
   })
 
+  randomReviewNoteList = new PromiseState({
+    function: async ({ limit = 30 }) => {
+      return await api.notes.randomNoteList.query({ limit })
+    }
+  })
+
   resourceList = new PromisePageState({
     function: async ({ page, size, searchText, folder }) => {
       return await api.attachments.list.query({ page, size, searchText, folder })
@@ -299,6 +320,7 @@ export class BlinkoStore implements Store {
     function: async () => {
       const falttenTags = await api.tags.list.query(undefined, { context: { skipBatch: true } });
       const listTags = helper.buildHashTagTreeFromDb(falttenTags)
+      console.log(falttenTags, 'listTags')
       let pathTags: string[] = [];
       listTags.forEach(node => {
         pathTags = pathTags.concat(helper.generateTagPaths(node));
@@ -388,6 +410,7 @@ export class BlinkoStore implements Store {
     this.dailyReviewNoteList.call()
     this.task.call()
   }
+
 
   async refreshData() {
     this.tagList.call()

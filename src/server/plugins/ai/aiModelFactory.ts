@@ -6,7 +6,7 @@ import { OllamaModelProvider } from './providers/ollama';
 import { AnthropicModelProvider } from './providers/anthropic';
 import { Agent } from '@mastra/core/agent';
 import { upsertBlinkoTool } from './tools/createBlinko';
-import { LibSQLVector } from '@mastra/core/vector/libsql';
+import { LibSQLVector } from './vector';
 import { DeepSeekModelProvider } from './providers/deepseek';
 import dayjs from 'dayjs';
 import { createLogger, Mastra } from '@mastra/core';
@@ -23,6 +23,8 @@ import { webExtra } from './tools/webExtra';
 import { searchBlinkoTool } from './tools/searchBlinko';
 import { updateBlinkoTool } from './tools/updateBlinko';
 import { deleteBlinkoTool } from './tools/deleteBlinko';
+import { rerank } from '@mastra/rag';
+import { AiBaseModelProvider } from './providers';
 
 export class AiModelFactory {
   //metadata->>'id'
@@ -61,17 +63,39 @@ export class AiModelFactory {
     }
   }
 
-  static async queryVector(query: string, accountId: number) {
-    const { VectorStore, Embeddings } = await AiModelFactory.GetProvider();
+  static async queryVector(query: string, accountId: number, _topK?: number) {
+    const { VectorStore, Embeddings, provider } = await AiModelFactory.GetProvider();
+
     const config = await AiModelFactory.globalConfig();
-    const topK = config.embeddingTopK ?? 3;
+    const topK = _topK ?? config.embeddingTopK ?? 3;
     const embeddingMinScore = config.embeddingScore ?? 0.4;
     const { embedding } = await embed({
       value: query,
       model: Embeddings,
     });
-    const result = await VectorStore.query('blinko', embedding, topK);
-    const filteredResults = result.filter(({ score }) => score > embeddingMinScore);
+
+    const result = await VectorStore.query({
+      indexName: 'blinko',
+      queryVector: embedding,
+      topK: topK,
+    });
+
+    let filteredResults = result.filter(({ score }) => score >= embeddingMinScore);
+
+    if (config.rerankModel) {
+      const rerankmodel = (await provider.rerankModel())!;
+      const rerankScore = config.rerankScore ?? 0.5;
+      const rerankedResults = await rerank(
+        result,
+        query,
+        rerankmodel,
+        {
+          topK: config.rerankTopK ?? 3
+        }
+      );
+      // console.log(rerankedResults, 'rerankedResults');
+      filteredResults = rerankedResults.filter((i) => i.score >= rerankScore).map((i) => i.result);
+    }
 
     const notes =
       (
@@ -114,6 +138,7 @@ export class AiModelFactory {
             _count: {
               select: {
                 comments: true,
+                histories: true,
               },
             },
           },
@@ -225,6 +250,7 @@ export class AiModelFactory {
           Embeddings: (await provider.Embeddings()) as EmbeddingModelV1<string>,
           MarkdownSplitter: provider.MarkdownSplitter() as MarkdownTextSplitter,
           TokenTextSplitter: provider.TokenTextSplitter() as TokenTextSplitter,
+          provider: provider as AiBaseModelProvider
         });
 
         switch (globalConfig.aiModelProvider) {
@@ -326,16 +352,12 @@ export class AiModelFactory {
   static TagAgent = AiModelFactory.#createAgentFactory(
     'Blinko Tagging Agent',
     `You are a precise label classification expert, and you will generate precisely matched content labels based on the content. Rules:
-      1. You must select the 5 most relevant tags from the existing tag list.
-      2. If the existing tags do not match the language of the content, prioritize using the language of the existing tags.
-      3. When existing tags have a parent-child structure (e.g., #Code/JavaScript), try to place new tags under the appropriate parent category.
-      4. When there is no matching existing tag, generate a new tag based on the content.
-      5. New tags must be consistent with the language of the content (only applicable when there are no existing tags).
-      6. Return only comma-separated tags (no spaces, no formatting, no code blocks).
-      7. Each tag must start with # (e.g., #JavaScript).
-      8. Valid response example: #JavaScript,#Programming,#Web,#Code/JavaScript.
-      9. Strictly prohibit returning any code blocks, JSON format, or markdown format.
-      10. Only return the tags themselves, do not add any explanations or descriptions.
+      1. **Core Selection Principle**: Select 5 to 8 tags from the existing tag list that are most relevant to the content theme. Carefully compare the key information, technical types, application scenarios, and other elements of the content to ensure that the selected tags accurately reflect the main idea of the content.
+      2. **Language Matching Strategy**: If the language of the existing tags does not match the language of the content, give priority to using the language of the existing tags to maintain the consistency of the language style of the tag system.
+      3. **Tag Structure Requirements**: When using existing tags, it is necessary to construct a parent-child hierarchical structure. For example, place programming language tags under parent tags such as #Code or #Programming, like #Code/JavaScript, #Programming/Python. When adding new tags, try to classify them under appropriate existing parent tags as well.
+      4. **New Tag Generation Rules**: If there are no tags in the existing list that match the content, create new tags based on the key technologies, business fields, functional features, etc. of the content. The language of the new tags should be consistent with that of the content.
+      5. **Response Format Specification**: Only return tags separated by commas. There should be no spaces between tags, and no formatting or code blocks should be used. Each tag should start with #, such as #JavaScript.
+      6. **Example**: For JavaScript content related to web development, a reference response could be #Programming/Languages, #Web/Development, #Code/JavaScript, #Front-End Development/Frameworks (if applicable), #Browser Compatibility. It is strictly prohibited to respond in formats such as code blocks, JSON, or Markdown. Just provide the tags directly. 
           `,
     'BlinkoTag',
   );
@@ -348,6 +370,24 @@ export class AiModelFactory {
      3. Use '💻,🔧' for tech content, '😊,🎉' for emotional content
      4. Must be separated by comma like '💻,🔧'`,
     'BlinkoEmoji',
+  );
+
+  static RelatedNotesAgent = AiModelFactory.#createAgentFactory(
+    'Blinko Related Notes Agent',
+    `You are a keyword extraction expert. Your task is to extract the most representative keywords from the provided note content.
+
+    Rules:
+    1. Analyze note content to identify core themes, concepts, and key information
+    2. Extract 5-8 keywords or phrases that accurately summarize the content
+    3. Ensure the extracted keywords are specific and can be used to find related notes
+    4. Sort the extracted keywords by importance from high to low
+    5. Return a comma-separated list of keywords without any additional formatting or explanation
+    6. Keywords should accurately express the content theme, not too broad or specific
+    7. If the note content includes professional terms or technical content, please ensure that the keywords include these terms
+
+    Example output:
+    machine learning, neural network, deep learning, TensorFlow, image recognition`,
+    'BlinkoRelatedNotes',
   );
 
   static CommentAgent = AiModelFactory.#createAgentFactory(

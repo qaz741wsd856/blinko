@@ -64,6 +64,7 @@ module.exports = withBundleAnalyzer(withPWA({
   output: 'standalone',
   transpilePackages: ['react-diff-view','highlight.js','remark-gfm','rehype-raw'],
   pageExtensions: ['tsx', 'ts', 'jsx', 'js'],
+  serverExternalPackages: ["@mastra/*", "onnxruntime-node", "@libsql/client"],
   async headers() {
     return [
       {
@@ -117,6 +118,15 @@ module.exports = withBundleAnalyzer(withPWA({
             value: 'public, max-age=31536000, immutable',
           },
         ],
+        source: '/dist/js/lute/lute.min.js',
+      },
+      {
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
         source: '/logo-light.png',
       },
       {
@@ -130,8 +140,9 @@ module.exports = withBundleAnalyzer(withPWA({
       }
     ];
   },
-  webpack: (config, { dev,isServer }) => {
+  webpack: (config, { dev, isServer }) => {
     config.experiments = { ...config.experiments, topLevelAwait: true };
+    
     if (!isServer) {
       config.resolve.fallback = {
         dns: false,
@@ -139,8 +150,21 @@ module.exports = withBundleAnalyzer(withPWA({
         fs: false,
         path: false,
         process: false,
+        'onnxruntime-node': false,
       };
     }
+    
+    config.module = {
+      ...config.module,
+      exprContextCritical: false,
+      noParse: [/onnxruntime-node/],
+    };
+    
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      canvas: false,
+    };
+    
     config.module.rules.push({
       test: /\.(glsl|vs|fs|vert|frag)$/,
       exclude: /node_modules/,
@@ -149,7 +173,6 @@ module.exports = withBundleAnalyzer(withPWA({
     return config;
   },
   reactStrictMode: isProduction? true : false,
-  swcMinify: true,
   eslint: {
     ignoreDuringBuilds: true,
   },

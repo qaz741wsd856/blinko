@@ -1,10 +1,8 @@
-import { CronTime } from "cron";
 import path from 'path';
 import fs from 'fs';
-import { writeFile } from 'fs/promises'
+import { writeFile } from 'fs/promises';
 import Package from '../../../package.json';
-import { $ } from 'execa';
-import AdmZip from 'adm-zip'
+import AdmZip from 'adm-zip';
 import { DBBAK_TASK_NAME, DBBAKUP_PATH, ROOT_PATH, TEMP_PATH, UPLOAD_FILE_PATH } from "@/lib/constant";
 import { prisma } from "../prisma";
 import { unlink } from "fs/promises";
@@ -19,6 +17,7 @@ import yauzl from 'yauzl-promise';
 import { FileService } from "./files";
 import { PutObjectCommand } from "@aws-sdk/client-s3";
 import { getGlobalConfig } from "../routers/config";
+import { resetSequences } from '../routers/helper';
 
 export type RestoreResult = {
   type: 'success' | 'skip' | 'error';
@@ -204,22 +203,52 @@ export class DBJob extends BaseScheduleJob {
         }
         const targetPath = path.join(ROOT_PATH, entry.filename);
         await fs.promises.mkdir(path.dirname(targetPath), { recursive: true });
-        const readStream = await entry.openReadStream();
-        const writeStream = fs.createWriteStream(targetPath);
-        await new Promise((resolve, reject) => {
-          readStream
-            .pipe(writeStream)
-            .on('finish', resolve)
-            .on('error', reject);
-        });
-        processedBytes += entry.uncompressedSize;
-        entryCount++;
+        
+        try {
+          const readStream = await entry.openReadStream();
+          const writeStream = fs.createWriteStream(targetPath);
+          
+          // Add error handlers to both streams
+          readStream.on('error', (err) => {
+            writeStream.destroy(err);
+          });
+          
+          writeStream.on('error', (err) => {
+            readStream.destroy();
+          });
+          
+          await new Promise((resolve, reject) => {
+            readStream
+              .pipe(writeStream)
+              .on('finish', () => {
+                // Ensure writeStream is properly closed
+                writeStream.end();
+                resolve(null);
+              })
+              .on('error', (err) => {
+                // Clean up both streams on error
+                writeStream.destroy();
+                readStream.destroy();
+                reject(err);
+              });
+          });
+          
+          processedBytes += entry.uncompressedSize;
+          entryCount++;
 
-        yield {
-          type: 'success',
-          content: `extract: ${entry.filename}`,
-          progress: { current: entryCount, total: totalEntries }
-        };
+          yield {
+            type: 'success',
+            content: `extract: ${entry.filename}`,
+            progress: { current: entryCount, total: totalEntries }
+          };
+        } catch (error) {
+          yield {
+            type: 'error',
+            content: `Failed to extract: ${entry.filename}`,
+            error,
+            progress: { current: entryCount, total: totalEntries }
+          };
+        }
       }
 
       await zipFileForExtract.close();
@@ -352,6 +381,23 @@ export class DBJob extends BaseScheduleJob {
         type: 'error',
         error,
         content: `extract failed: ${error.message}`,
+        progress: { current: 0, total: 0 }
+      };
+    }
+
+    // Reset sequences after restore
+    try {
+      await resetSequences();
+      yield {
+        type: 'success',
+        content: 'Sequences reset successfully',
+        progress: { current: 0, total: 0 }
+      };
+    } catch (error) {
+      yield {
+        type: 'error',
+        error,
+        content: `Failed to reset sequences: ${error.message}`,
         progress: { current: 0, total: 0 }
       };
     }

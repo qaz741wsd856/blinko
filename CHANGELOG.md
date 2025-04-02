@@ -1,3 +1,139 @@
+## [0.49.1](https://github.com/blinko-space/blinko/compare/v0.49.0...v0.49.1) (2025-04-01)
+
+
+### Bug Fixes
+
+* add optional chaining to prevent errors when accessing editContentStorage ([3c044c6](https://github.com/blinko-space/blinko/commit/3c044c681cfe568725ddb042935ccc1fcef9a425))
+
+# [0.49.0](https://github.com/blinko-space/blinko/compare/v0.48.2...v0.49.0) (2025-04-01)
+
+
+### Bug Fixes
+
+* content in the trash doesn't show a public item ([ee7e70d](https://github.com/blinko-space/blinko/commit/ee7e70de8fd69802a6721403ca1d0c2a799073c7))
+* **memos:** add missing type field in notes upsert, set default value as 0, which is type of flash. close issue [#551](https://github.com/blinko-space/blinko/issues/551) ([4e76f30](https://github.com/blinko-space/blinko/commit/4e76f30a39940e5c11cf70190a8aa792a27cf9f1))
+
+
+### Features
+
+* add 'deselect-all' functionality and update translations ([d4d7eb6](https://github.com/blinko-space/blinko/commit/d4d7eb680d1f6557d28774b78637fd0188981750))
+
+## [0.48.2](https://github.com/blinko-space/blinko/compare/v0.48.1...v0.48.2) (2025-03-31)
+
+
+### Bug Fixes
+
+* update translation and implement sequence reset functionality ([2e4d101](https://github.com/blinko-space/blinko/commit/2e4d101fe4f0c32ed0b8a9aefa88a8908bd7ec05))
+
+## [0.48.1](https://github.com/blinko-space/blinko/compare/v0.48.0...v0.48.1) (2025-03-31)
+
+
+### Bug Fixes
+
+* icon issues ([62c9748](https://github.com/blinko-space/blinko/commit/62c974828c1bcdfb6396306d3a2b2f956257db6c))
+
+# [0.48.0](https://github.com/blinko-space/blinko/compare/v0.47.3...v0.48.0) (2025-03-31)
+
+
+### Features
+
+* enhance BlinkoShareDialog and editorStore functionality ([3f9053d](https://github.com/blinko-space/blinko/commit/3f9053da7b47320d312b2d3401e4d089bd48adf5))
+* support mutli eidtor ([494c24e](https://github.com/blinko-space/blinko/commit/494c24ec6c2cf746ab21ff97b56e2d7537eab6c4))
+* update icon collections and layout adjustments ([afbc1c6](https://github.com/blinko-space/blinko/commit/afbc1c66f567529268d05e5eeb262eefb64ca6f1))
+
+## [0.47.3](https://github.com/blinko-space/blinko/compare/v0.47.2...v0.47.3) (2025-03-31)
+
+
+### Bug Fixes
+
+* editor error ([1f8702c](https://github.com/blinko-space/blinko/commit/1f8702c94f69611d0361171f2e8fc7d6956c1132))
+
+## [0.47.2](https://github.com/blinko-space/blinko/compare/v0.47.1...v0.47.2) (2025-03-30)
+
+
+### Bug Fixes
+
+* decode filename from binary to UTF-8 in file upload ([53c9e1f](https://github.com/blinko-space/blinko/commit/53c9e1fdc00dd9155d69691192dee120502db76e))
+
+## [0.47.1](https://github.com/blinko-space/blinko/compare/v0.47.0...v0.47.1) (2025-03-30)
+
+
+### Bug Fixes
+
+* add rerank model settings and update translations ([005eb97](https://github.com/blinko-space/blinko/commit/005eb97f63da6be48b741d7e7ba1f9e85f6d6e01))
+
+# [0.47.0](https://github.com/blinko-space/blinko/compare/v0.46.6...v0.47.0) (2025-03-30)
+
+
+### Bug Fixes
+
+* Tooltip component display problems ([c6d2039](https://github.com/blinko-space/blinko/commit/c6d20394fb2be332301465a99c4dc41b107806f0))
+
+
+### Features
+
+* add related notes feature and random mode ([54bf6e8](https://github.com/blinko-space/blinko/commit/54bf6e8295e5f65ee5108ba43d32fc9e7fde9826))
+
+## [0.46.6](https://github.com/blinko-space/blinko/compare/v0.46.5...v0.46.6) (2025-03-30)
+
+
+### Bug Fixes
+
+* delete tags and botes button undelete tags Issue ([6712234](https://github.com/blinko-space/blinko/commit/6712234ebfd33aeaa11b6a350427ea6f91fd463b))
+
+## [0.46.5](https://github.com/blinko-space/blinko/compare/v0.46.4...v0.46.5) (2025-03-30)
+
+
+### Bug Fixes
+
+* update Icon imports and add new build script for icon generation ([7d66542](https://github.com/blinko-space/blinko/commit/7d66542560620e8516fb158876d8432500ed5239))
+
+## [0.46.4](https://github.com/blinko-space/blinko/compare/v0.46.3...v0.46.4) (2025-03-29)
+
+
+### Bug Fixes
+
+* remove react-audio-visualize dependency and update related components for audio handling ([f3b49f6](https://github.com/blinko-space/blinko/commit/f3b49f6dc581e0f42991423dd722b130d6cf9207))
+
+## [0.46.3](https://github.com/blinko-space/blinko/compare/v0.46.2...v0.46.3) (2025-03-29)
+
+
+### Bug Fixes
+
+* update session and jwt maxAge to extend duration to 10 years ([46b3b58](https://github.com/blinko-space/blinko/commit/46b3b5884a6d261df4981e4555a7be507415cccf))
+
+## [0.46.2](https://github.com/blinko-space/blinko/compare/v0.46.1...v0.46.2) (2025-03-29)
+
+
+### Bug Fixes
+
+* update startDate and endDate types to include string in note router ([cc0ab9a](https://github.com/blinko-space/blinko/commit/cc0ab9aba5387a504f406211bce555d19862b97b))
+
+## [0.46.1](https://github.com/blinko-space/blinko/compare/v0.46.0...v0.46.1) (2025-03-29)
+
+
+### Bug Fixes
+
+* add global prisma installation and update CMD in Dockerfile ([2ba56a2](https://github.com/blinko-space/blinko/commit/2ba56a2b9e6b421766bb4a06a95c4f279d476883))
+
+# [0.46.0](https://github.com/blinko-space/blinko/compare/v0.45.3...v0.46.0) (2025-03-28)
+
+
+### Bug Fixes
+
+* change editor to ir mode ([19446c0](https://github.com/blinko-space/blinko/commit/19446c08d9137e0225892b69bf75b307211ae0ff))
+* clean up RecommandJob and update logging ([757b1de](https://github.com/blinko-space/blinko/commit/757b1dea575cd30420bf19a32e438d43929db7ad))
+* improve RecommandJob initialization and batch processing ([c2e65aa](https://github.com/blinko-space/blinko/commit/c2e65aaee6cb270246ac5b31da7f8eff5a4f913e))
+* remove unused dependencies and update configuration ([9781629](https://github.com/blinko-space/blinko/commit/9781629cded5ea0787e447b4fefc9210fa11e223))
+* update i18n ([0b2c757](https://github.com/blinko-space/blinko/commit/0b2c757ff7306cd9bef502697e56bc13347652ff))
+* update lru cache maxSize ([2474d77](https://github.com/blinko-space/blinko/commit/2474d772438ab08e5085b1e02602864285effc47))
+
+
+### Features
+
+* add AI post-processing features and update configurations ([1d12409](https://github.com/blinko-space/blinko/commit/1d12409e10e016f9ab7ec6b0cc749c59a6b195c5))
+* add babel-loader dependency ([5f21fa2](https://github.com/blinko-space/blinko/commit/5f21fa25488465efa85d28f4557ad618c8903842))
+
 ## [0.45.3](https://github.com/blinko-space/blinko/compare/v0.45.2...v0.45.3) (2025-03-25)
 
 

@@ -3,7 +3,6 @@ import { eventBus } from '@/lib/event';
 import { EditorStore } from '../editorStore';
 import { FocusEditorFixMobile, HandleFileType } from '../editorUtils';
 import { BlinkoStore } from '@/store/blinkoStore';
-import { handlePaste, usePasteFile } from '@/lib/hooks';
 import { OnSendContentType } from '../type';
 import Vditor from 'vditor';
 import { ToolbarMobile, ToolbarPC } from '../EditorToolbar';
@@ -41,12 +40,8 @@ export const useEditorInit = (
     const vditor = new Vditor("vditor" + "-" + mode, {
       width: '100%',
       "toolbar": isPc ? ToolbarPC : ToolbarMobile,
-      mode: isPc ? store.viewMode : (store.viewMode == 'wysiwyg' ? 'ir' : store.viewMode),
+      mode: isPc ? store.viewMode : (store.viewMode == 'ir' ? 'ir' : store.viewMode),
       theme,
-      counter: {
-        enable: true,
-        type: 'markdown',
-      },
       hint: {
         extend: mode != 'comment' ? Extend : AIExtend
       },
@@ -158,7 +153,7 @@ export const useEditorEvents = (store: EditorStore) => {
     if (!store.isFullscreen) return;
 
     requestAnimationFrame(() => {
-      const editorElement = document.querySelector('.vditor-reset') as HTMLElement;
+      const editorElement = document.querySelector('.vditor-ir .vditor-reset') as HTMLElement;
       const attachmentContainer = document.querySelector('.attachment-container') as HTMLElement;
       const referenceContainer = document.querySelector('.reference-container') as HTMLElement;
 
@@ -220,7 +215,7 @@ export const useEditorEvents = (store: EditorStore) => {
 
       (store as any)._mutationObserver = mutationObserver;
     } else {
-      const editorElement = document.querySelector('.vditor-reset') as HTMLElement;
+      const editorElement = document.querySelector('.vditor-ir .vditor-reset') as HTMLElement;
       if (editorElement) {
         editorElement.style.height = '';
         editorElement.style.maxHeight = '';
@@ -278,7 +273,7 @@ export const useEditorFiles = (
 ) => {
   useEffect(() => {
     if (originFiles?.length) {
-      console.log({originFiles})
+      console.log({ originFiles })
       store.files = HandleFileType(originFiles);
     }
   }, [originFiles]);

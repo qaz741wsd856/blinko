@@ -1,8 +1,7 @@
-import { Icon } from "@iconify/react"
-import { Button, DropdownTrigger, DropdownItem, DropdownMenu, Dropdown, Tooltip } from "@heroui/react"
-import { Code } from "@heroui/react"
-import { useTranslation } from "react-i18next"
-import { observer } from "mobx-react-lite"
+import { Icon } from '@/components/Common/Iconify/icons';
+import { Button, DropdownTrigger, DropdownItem, DropdownMenu, Dropdown, Tooltip } from "@heroui/react";
+import { useTranslation } from "react-i18next";
+import { observer } from "mobx-react-lite";
 
 type IProps = {
   leftContent?: any
@@ -30,14 +29,14 @@ export const Item = observer(({ leftContent, rightContent, type = 'row', hidden 
 
 
 export const ItemWithTooltip = observer(({ content, toolTipContent }: { content: any, toolTipContent: any }) => {
-  return <div className="flex items-center gap-2">
-    {content}
-    <Tooltip content={<div className="max-w-[300px] flex flex-col gap-2 p-2">
+  return  <Tooltip content={<div className="max-w-[300px] flex flex-col gap-2 p-2">
       {toolTipContent}
     </div>}>
-      <Icon icon="proicons:info" width="18" height="18" />
+      <div className="flex items-center gap-2">
+        {content}
+        <Icon icon="proicons:info" width="18" height="18" />
+      </div>
     </Tooltip>
-  </div>
 })
 
 

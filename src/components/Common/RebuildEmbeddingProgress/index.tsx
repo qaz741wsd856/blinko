@@ -7,7 +7,7 @@ import { ToastPlugin } from '@/store/module/Toast/Toast'
 import { observer } from 'mobx-react-lite'
 import { useEffect } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Icon } from '@iconify/react'
+import { Icon } from '@/components/Common/Iconify/icons'
 import { Progress } from "@heroui/react"
 import { DialogStandaloneStore } from '@/store/module/DialogStandalone'
 
@@ -116,7 +116,6 @@ export const ImportProgress = observer(({ force }: { force: boolean }) => {
       try {
         await api.ai.rebuildEmbeddingStop.mutate();
         
-        // 停止任务后立即更新状态
         const result = await api.ai.rebuildEmbeddingProgress.query();
         if (result) {
           store.progress = result.current || 0;
@@ -130,7 +129,6 @@ export const ImportProgress = observer(({ force }: { force: boolean }) => {
         });
         
         blinko.updateTicker++;
-        // 停止轮询
         store.stopPolling();
         RootStore.Get(DialogStandaloneStore).close()
       } catch (err) {

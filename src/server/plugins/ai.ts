@@ -15,14 +15,12 @@ import { CreateNotification } from '../routers/notification';
 import { NotificationType } from '@/lib/prismaZodType';
 import { CoreMessage } from '@mastra/core';
 import { MDocument } from '@mastra/rag';
-import { embed, embedMany } from 'ai';
+import { embedMany } from 'ai';
 import { RebuildEmbeddingJob } from './rebuildEmbeddingJob';
-import { LibSQLVector } from '@mastra/core/vector/libsql';
 import { userCaller } from '../routers/_app';
 import { getAllPathTags } from '../routers/helper';
-//https://js.langchain.com/docs/introduction/
-//https://smith.langchain.com/onboarding
-//https://js.langchain.com/docs/tutorials/qa_chat_history
+import { LibSQLVector } from './ai/vector';
+
 
 export function isImage(filePath: string): boolean {
   if (!filePath) return false;
@@ -203,51 +201,13 @@ export class AiService {
   }
 
   static async enhanceQuery({ query, ctx }: { query: string; ctx: Context }) {
-    const { VectorStore, Embeddings } = await AiModelFactory.GetProvider();
-    const config = await AiModelFactory.globalConfig();
-
-    const { embedding } = await embed({
-      value: query,
-      model: Embeddings,
-    });
-
-    const results = await VectorStore.query('blinko', embedding, 20);
-
-    const DISTANCE_THRESHOLD = config.embeddingScore ?? 0.3;
-
-    const filteredResultsWithScore = results
-      .filter(({ score }) => score > DISTANCE_THRESHOLD)
-      .sort((a, b) => b.score - a.score)
-      .map(({ metadata, score }) => ({
-        metadata,
-        score,
-      }));
-
-    // console.log(filteredResultsWithScore, 'filteredResultsWithScore');
-
-    const notes = await prisma.notes.findMany({
-      where: {
-        id: { in: filteredResultsWithScore.map((i) => i.metadata?.id).filter((i) => !!i) },
-        accountId: Number(ctx.id),
-      },
-      include: {
-        tags: { include: { tag: true } },
-        attachments: true,
-        _count: {
-          select: {
-            comments: true,
-            histories: true,
-          },
-        },
-      },
-    });
-    const sortedNotes = notes.sort((a, b) => {
-      const scoreA = filteredResultsWithScore.find((r) => r.metadata?.id === a.id)?.score ?? Infinity;
-      const scoreB = filteredResultsWithScore.find((r) => r.metadata?.id === b.id)?.score ?? Infinity;
-      return scoreB - scoreA;
-    });
-    console.log(sortedNotes, 'sortedNotes');
-    return sortedNotes;
+    try {
+      const { notes } = await AiModelFactory.queryVector(query, Number(ctx.id));
+      return notes;
+    } catch (error) {
+      console.error('Error in enhanceQuery:', error);
+      return [];
+    }
   }
 
   static async completions({
@@ -387,7 +347,7 @@ export class AiService {
       }
 
       // Get the custom prompt, or use default
-      const prompt = config.aiPostProcessingPrompt || 'Analyze the following note content. Extract key topics as tags and provide a brief summary of the main points.';
+      const prompt = config.aiCommentPrompt || 'Analyze the following note content. Extract key topics as tags and provide a brief summary of the main points.';
 
       // Process with AI
       const agent = await AiModelFactory.CommentAgent();
@@ -454,6 +414,43 @@ export class AiService {
           });
         } catch (error) {
           console.error('Error processing tags:', error);
+        }
+      }
+
+      if (processingMode === 'smartEdit' || processingMode === 'both') {
+        try {
+          const smartEditPrompt = config.aiSmartEditPrompt || 'Improve this note by organizing content, adding headers, and enhancing readability.';
+          const agent = await AiModelFactory.BaseChatAgent({ withTools: true });
+          const result = await agent.generate([
+            {
+              role: 'system',
+              content: `You are an AI assistant that helps to improve notes. You'll be provided with a note content, and your task is to enhance it according to instructions. You have access to tools that can help you modify the note. Use these tools to make the requested improvements.`
+            },
+            {
+              role: 'user',
+              content: `\nCurrent user id: ${ctx.id}\nCurrent user name: ${ctx.name}\n${smartEditPrompt}\n\nNote ID: ${noteId}\nNote content:\n${note.content}`
+            }
+          ]);
+          await prisma.comments.create({
+            data: {
+              content: result.text,
+              noteId,
+              guestName: 'Blinko AI',
+              guestIP: '',
+              guestUA: '',
+            },
+          });
+        } catch (error) {
+          console.error('Error during smart edit:', error);
+          await prisma.comments.create({
+            data: {
+              content: `⚠️ **Smart Edit Error**\n\nI encountered an error while trying to edit this note. This may happen if the AI model doesn't support function calling or if there was an issue with the edit process.\n\nError details: ${error.message}`,
+              noteId,
+              guestName: 'Blinko AI',
+              guestIP: '',
+              guestUA: '',
+            },
+          });
         }
       }
 
