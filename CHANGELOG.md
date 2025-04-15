@@ -1,3 +1,17 @@
+## [0.52.3](https://github.com/blinko-space/blinko/compare/v0.52.2...v0.52.3) (2025-04-14)
+
+
+### Bug Fixes
+
+* update _app ([006b718](https://github.com/blinko-space/blinko/commit/006b7181424b06600c19fba5afc35acf8675ba30))
+
+## [0.52.2](https://github.com/blinko-space/blinko/compare/v0.52.1...v0.52.2) (2025-04-14)
+
+
+### Bug Fixes
+
+* [API] Note Linking Info Lost After Updating A Note [#630](https://github.com/blinko-space/blinko/issues/630) ([2f8a2b4](https://github.com/blinko-space/blinko/commit/2f8a2b4ada7631b44a4cab40dc3a0c6eeb00f31b))
+
 ## [0.52.1](https://github.com/blinko-space/blinko/compare/v0.52.0...v0.52.1) (2025-04-12)
 
 
